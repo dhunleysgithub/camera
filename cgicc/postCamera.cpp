@@ -27,7 +27,7 @@ fs >> number;
 ostringstream temp;  //temp as in temporary
 temp<<number;
 //exposureCount=temp.str();      //str is temp as string
-exposureCount=ss;      //str is temp as string
+exposureCount=ss.str();      //str is temp as string
 //cout << "The integer number value was " << number << " exposure counts." << endl;
 //cout << "The string number number value was " << number << " exposure counts." << endl;
 fs.close();
