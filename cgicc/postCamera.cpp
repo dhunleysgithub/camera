@@ -34,7 +34,7 @@ myfile.open ("example.html");
 
    it = form.getElement("exposures");   // get the period text value
    if (it == form.getElements().end() || it->getValue()==""){
-      exposureCount = "0";                         // if it is invalid use 100
+      exposureCount = "1";                         // if it is invalid use 100
    }
    else { exposureCount = it->getValue(); }          // otherwise use submitted value
 
@@ -101,7 +101,7 @@ cout <<  "<body>" << endl;
 
 
 cout <<  "<div id=\"header\">" << endl;
-cout <<  "<h1>Hunley's June 16th 2016 Eng Inc.</h1>" << endl;
+cout <<  "<h1>Hunley's June 16th PM 2016 Eng Inc.</h1>" << endl;
 cout <<  "</div>" << endl;
 
 cout <<  "<div id=\"nav\">" << endl;
