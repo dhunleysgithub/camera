@@ -101,7 +101,7 @@ cout <<  "<body>" << endl;
 
 
 cout <<  "<div id=\"header\">" << endl;
-cout <<  "<h1>Hunley June 16th 2016 Eng Inc.</h1>" << endl;
+cout <<  "<h1>Hunleys June 16th 2016 Eng Inc.</h1>" << endl;
 cout <<  "</div>" << endl;
 
 cout <<  "<div id=\"nav\">" << endl;
