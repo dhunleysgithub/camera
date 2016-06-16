@@ -7,11 +7,30 @@
 #include <cgicc/HTMLClasses.h>
 #include "LED.h"            // the LED class from Chapter 5 of the book 
 #include <fstream>
+#include <sstream>
+
 using namespace std;
 using namespace cgicc;
 
+#define exposureCount_PATH "/root/expcounts.txt"
+
 int main()
 {
+
+ostringstream temp;  //temp as in temporary
+string exposureCount;
+int number;
+stringstream ss;
+ss << exposureCount_PATH;
+fstream fs;
+fs.open(ss.str().c_str(), fstream::in);
+fs >> number;
+ostringstream temp;  //temp as in temporary
+temp<<number;
+exposureCount=temp.str();      //str is temp as string
+//cout << "The integer number value was " << number << " exposure counts." << endl;
+//cout << "The string number number value was " << number << " exposure counts." << endl;
+fs.close();
 
 ofstream myfile;
    int i;
@@ -34,7 +53,7 @@ myfile.open ("example.html");
 
    it = form.getElement("exposures");   // get the period text value
    if (it == form.getElements().end() || it->getValue()==""){
-      exposureCount = "1";                         // if it is invalid use 100
+      exposureCount = "0";                         // if it is invalid use 100
    }
    else { exposureCount = it->getValue(); }          // otherwise use submitted value
 
@@ -101,7 +120,7 @@ cout <<  "<body>" << endl;
 
 
 cout <<  "<div id=\"header\">" << endl;
-cout <<  "<h1>Hunley's June 16th PM 2016 Eng Inc.</h1>" << endl;
+cout <<  "<h1>Hunley's June 16th 2016 Eng Inc.</h1>" << endl;
 cout <<  "</div>" << endl;
 
 cout <<  "<div id=\"nav\">" << endl;
