@@ -17,7 +17,7 @@ using namespace cgicc;
 int main()
 {
 
-string exposureCount;
+string exposureCount1;
 int number;
 stringstream ss;
 ss << exposureCount_PATH;
@@ -26,8 +26,8 @@ fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
 ostringstream temp;  //temp as in temporary
 temp<<number;
-//exposureCount=temp.str();      //str is temp as string
-exposureCount=ss.str();      //str is temp as string
+exposureCount1=temp.str();      //str is temp as string
+//exposureCount=ss.str();      //str is temp as string
 //cout << "The integer number value was " << number << " exposure counts." << endl;
 //cout << "The string number number value was " << number << " exposure counts." << endl;
 fs.close();
@@ -35,7 +35,7 @@ fs.close();
 ofstream myfile;
    int i;
    Cgicc form;                                     // the CGI form object
-   string pwr_cmd, command;
+   string pwr_cmd, command, exposureCount;
 
 myfile.open ("example.html");
 
@@ -53,7 +53,8 @@ myfile.open ("example.html");
 
    it = form.getElement("exposures");   // get the period text value
    if (it == form.getElements().end() || it->getValue()==""){
-      exposureCount = "0";                         // if it is invalid use 100
+      //exposureCount = "0";                         // if it is invalid use 100
+      exposureCount = exposureCount1;
    }
    else { exposureCount = it->getValue(); }          // otherwise use submitted value
 
