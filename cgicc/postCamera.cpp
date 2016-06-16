@@ -113,7 +113,8 @@ cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\
 cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
-cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"exposureCount\"/><br>" << endl;
+cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/><br>" << endl;
+
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
 
 cout <<  "<label class=\"description\" for=\"element_1\">Frame Count : </label>" << endl;
