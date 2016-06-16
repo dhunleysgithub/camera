@@ -16,7 +16,7 @@ int main()
 ofstream myfile;
    int i;
    Cgicc form;                                     // the CGI form object
-   string pwr_cmd, command;
+   string pwr_cmd, command, exposureCount;
 
 myfile.open ("example.html");
 
@@ -31,6 +31,13 @@ myfile.open ("example.html");
       command = "single";                             // if it is invalid use "off"
    }
    else { command = it->getValue(); }              // otherwise use submitted value
+
+   it = form.getElement("exposures");   // get the period text value
+   if (it == form.getElements().end() || it->getValue()==""){
+      exposureCount = "0";                         // if it is invalid use 100
+   }
+   else { exposureCount = it->getValue(); }          // otherwise use submitted value
+
    char *value = getenv("REMOTE_ADDR");	           // The remote address CGI env. variable
 
 
@@ -94,7 +101,7 @@ cout <<  "<body>" << endl;
 
 
 cout <<  "<div id=\"header\">" << endl;
-cout <<  "<h1>Hunley June 14th 2016 Eng Inc.</h1>" << endl;
+cout <<  "<h1>Hunley June 16th 2016 Eng Inc.</h1>" << endl;
 cout <<  "</div>" << endl;
 
 cout <<  "<div id=\"nav\">" << endl;
@@ -106,7 +113,7 @@ cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\
 cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
-cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
+cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"exposureCount\"/><br>" << endl;
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
 
 cout <<  "<label class=\"description\" for=\"element_1\">Frame Count : </label>" << endl;
