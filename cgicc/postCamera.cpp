@@ -205,6 +205,8 @@ cout <<  "</html>" << endl;
     }
     else cout << "<div> Invalid command! </div>";        // not possible at the moment
 
+    cout << "<div> The exposure count file is " << ss.str() << "</div>";
+    cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
 
 
 
