@@ -17,7 +17,6 @@ using namespace cgicc;
 int main()
 {
 
-ostringstream temp;  //temp as in temporary
 string exposureCount;
 int number;
 stringstream ss;
