@@ -34,7 +34,7 @@ fs.close();
 ofstream myfile;
    int i;
    Cgicc form;                                     // the CGI form object
-   string pwr_cmd, command, exposureCount;
+   string pwr_cmd, command;
 
 myfile.open ("example.html");
 
