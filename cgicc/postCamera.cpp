@@ -57,7 +57,9 @@ myfile.open ("example.html");
       exposureCount = exposureCount1;
    }
    else { exposureCount = it->getValue(); }          // otherwise use submitted value
-
+   
+   exposureCount = exposureCount1;
+   
    char *value = getenv("REMOTE_ADDR");	           // The remote address CGI env. variable
 
 
