@@ -35,7 +35,7 @@ fs.close();
 ofstream myfile;
    int i;
    Cgicc form;                                     // the CGI form object
-   string pwr_cmd, command, exposureCount;
+   string pwr_cmd, command, exposureCount, exposuresRequested;
 
 myfile.open ("example.html");
 
@@ -51,16 +51,22 @@ myfile.open ("example.html");
    }
    else { command = it->getValue(); }              // otherwise use submitted value
 
-   it = form.getElement("exposures");   // get the period text value
+   it = form.getElement("exposures");   // get the exisitng number of exposures executed value
    if (it == form.getElements().end() || it->getValue()==""){
       //exposureCount = "0";                         // if it is invalid use 100
       exposureCount = exposureCount1;
    }
    else { exposureCount = it->getValue(); }          // otherwise use submitted value
+      exposureCount = exposureCount1;
    
-   exposureCount = exposureCount1;
+   it = form.getElement("multexpreq");   // get the exisitng number of exposures executed value
+   if (it == form.getElements().end() || it->getValue()==""){
+      exposuresRequested = "0"; // if it is invalid use 100
+   }
+   else { exposuresRequested = it->getValue(); }          // otherwise use submitted value
    
    char *value = getenv("REMOTE_ADDR");	           // The remote address CGI env. variable
+
 
 
 // Generate the form but use states that are set in the form that was submitted
@@ -131,7 +137,7 @@ cout <<  "<h2>Control </h2>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Time : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\" maxlength=\"25\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Multiple Exp. : </label>" << endl;
-cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"25\" value=\"\"/><br>" << endl;
+cout <<  "<input id=\"element_1\" name=\"multexpreq\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"25\" value=\""<< exposuresRequested << "\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
