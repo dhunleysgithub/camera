@@ -1,5 +1,5 @@
 #!/bin/bash
-cd camera
+cd /root/camera
 rm ./cgicc/postCamera.cpp
 git pull
 cd cgicc
