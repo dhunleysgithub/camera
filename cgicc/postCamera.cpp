@@ -57,7 +57,7 @@ myfile.open ("example.html");
       exposureCount = exposureCount1;
    }
    else { exposureCount = it->getValue(); }          // otherwise use submitted value
-      exposureCount = exposureCount1;
+      //exposureCount = exposureCount1;
    
    it = form.getElement("multexpreq");   // get the exisitng number of exposures executed value
    if (it == form.getElements().end() || it->getValue()==""){
