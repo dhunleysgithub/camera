@@ -1,5 +1,5 @@
 #include <iostream>         // for the input/output
-#include <stdlib.h>         // for the getenv call
+#include <stdlib.h>         // for the system, getenv calls
 #include <sys/sysinfo.h>    // for the system uptime call
 #include <cgicc/Cgicc.h>    // the cgicc headers
 #include <cgicc/CgiDefs.h>
@@ -51,7 +51,7 @@ myfile.open ("example.html");
    }
    else { command = it->getValue(); }              // otherwise use submitted value
 
-   it = form.getElement("exposures");   // get the exisitng number of exposures executed value
+   it = form.getElement("exposures");   // get the existing number of exposures executed value
    if (it == form.getElements().end() || it->getValue()==""){
       //exposureCount = "0";                         // if it is invalid use 100
       exposureCount = exposureCount1;
@@ -213,7 +213,13 @@ cout <<  "</html>" << endl;
     }
     else cout << "<div> Invalid command! </div>";        // not possible at the moment
 
-    cout << "<div> The exposure count file is " << ss.str() << "</div>";
+    if (command=="single")
+    {
+     i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
+     cout << "<div> Ran a single exposure ! </div>";
+    }
+
+	cout << "<div> The exposure count file is " << ss.str() << "</div>";
     cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
 
 
