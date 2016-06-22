@@ -43,5 +43,9 @@ then
 else
 
 echo "Did not find all PWM directories"
+echo "Initializing PWMs"
+/root/camera/pwm_init/setup_pwm.sh
+/root/camera/pwm_init/pwminit
+echo "Initialized PWMs"
 
 fi
