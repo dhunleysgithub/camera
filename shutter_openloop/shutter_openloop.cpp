@@ -47,7 +47,7 @@ temp<<number;
 exposureCount1=temp.str();      //str is temp as string
 //exposureCount=ss.str();      //str is temp as string
 cout << "The ending exposure count is " << number << endl;
-number >> fs;
+fs << exposureCount1;
 fs.close();
 
 // P9_21 is Pin Number 6
