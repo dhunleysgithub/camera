@@ -1,6 +1,5 @@
 /*
  * stepper.cpp  Created on: 7 Feb 2016
-
  * Dwight Hunley
 */
 
@@ -9,9 +8,14 @@
 #include"PWM.h"      //placed in the current directory for ease of use
 #include"GPIO.h"
 #include<unistd.h> //for usleep
+#include <stdlib.h>         // for the system calls
+#include <fstream>
+#include <sstream>
 
 using namespace exploringBB;
 using namespace std;
+
+#define exposureCount_PATH "/root/expcounts.txt"
 
 int main (int argc, char** argv)
 {
@@ -27,8 +31,24 @@ int main (int argc, char** argv)
         // Exit
         return 1;
     }
-
 */
+
+string exposureCount1; 
+int number;
+stringstream ss;
+ss << exposureCount_PATH;
+fstream fs;
+fs.open(ss.str().c_str(), fstream::in);
+fs >> number;
+cout << "The starting exposure count is " << number << endl;
+number+=1;  // add one exposure count each time this program is called
+ostringstream temp;  //temp as in temporary
+temp<<number;
+exposureCount1=temp.str();      //str is temp as string
+//exposureCount=ss.str();      //str is temp as string
+cout << "The ending exposure count is " << number << endl;
+number >> fs;
+fs.close();
 
 // P9_21 is Pin Number 6
    PWM pwm_apos("pwm_test_P9_21.17");      // P9_21 MUST be loaded as a slot before use
