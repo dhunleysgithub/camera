@@ -38,31 +38,6 @@ ofstream myfile;
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
    bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
       
-   form_iterator it = form.getElement("expsReset");   // get the period text value
- 
-   if (it == form.getElements().end() || it->getValue()=="")
-  {
-     // do nothing
-  }
-  else
-  {
-   if (isReset){
-
-  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
-  ofstream myfile2 (ss.str().c_str());
-  if (myfile2.is_open())
-  {
-    myfile2 << 0;
-    myfile2.close();
-  }
-  else {
-     //cout << "Unable to open file";
-     cout << "<div> Unable to reset exposure count to 0  "  << "</div>";
-     cout << "<div> Unable to open file  "  << "</div>";
-   }
-
-   }
-}
    
    myfile.open ("example.html");
 
@@ -258,6 +233,23 @@ cout <<  "</html>" << endl;
     if (command=="single")
     {
        
+   if (isReset){
+
+  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
+  ofstream myfile2 (ss.str().c_str());
+  if (myfile2.is_open())
+  {
+    myfile2 << 0;
+    myfile2.close();
+  }
+  else {
+     //cout << "Unable to open file";
+     cout << "<div> Unable to reset exposure count to 0  "  << "</div>";
+     cout << "<div> Unable to open file  "  << "</div>";
+   }
+
+   }
+}
   
    
      i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
