@@ -211,22 +211,6 @@ cout <<  "</html>" << endl;
 //   it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
 //   expsReset = it->getValue();          // otherwise use submitted value
 
-if (isReset){
-
-  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
-  ofstream myfile2 (ss.str().c_str());
-  if (myfile2.is_open())
-  {
-    myfile2 << 0;
-    myfile2.close();
-  }
-  else {
-     //cout << "Unable to open file";
-     cout << "<div> Unable to reset exposure count to 0  "  << "</div>";
-     cout << "<div> Unable to open file  "  << "</div>";
-   }
-
-   }
  
    // Process the form data to trigger the Power or LED state
    if (pwr_cmd=="on")
@@ -246,6 +230,24 @@ if (isReset){
 
     if (command=="single")
     {
+       
+       if (isReset){
+
+  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
+  ofstream myfile2 (ss.str().c_str());
+  if (myfile2.is_open())
+  {
+    myfile2 << 0;
+    myfile2.close();
+  }
+  else {
+     //cout << "Unable to open file";
+     cout << "<div> Unable to reset exposure count to 0  "  << "</div>";
+     cout << "<div> Unable to open file  "  << "</div>";
+   }
+
+   }
+
      i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
      cout << "<div> Ran a single exposure ! </div>";
     }
