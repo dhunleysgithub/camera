@@ -64,6 +64,12 @@ myfile.open ("example.html");
       exposuresRequested = "0"; // if it is invalid use 100
    }
    else { exposuresRequested = it->getValue(); }          // otherwise use submitted value
+
+   it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
+   if (it == form.getElements().end() || it->getValue()==""){
+      expsReset = "No"; // if it is invalid use 100
+   }
+   else { expsReset = it->getValue(); }          // otherwise use submitted value
    
    char *value = getenv("REMOTE_ADDR");	           // The remote address CGI env. variable
 
@@ -145,7 +151,10 @@ cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </la
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
-cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" > Reset <br>" << endl;
+//cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" > Reset <br>" << endl;
+
+cout << "<input type=\"checkbox\" name=\"expsReset\" value=\"on\""
+      << ( expsReset=="reset" ? "checked":"") << "/> Reset ";	// is the pwr_cmd="on"?
 
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
 
