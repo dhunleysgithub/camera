@@ -36,7 +36,7 @@ ofstream myfile;
    int i;
    Cgicc form;                                     // the CGI form object
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
-
+   bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
 myfile.open ("example.html");
 
    //bool isStatus = form.queryCheckbox("status");   // get the state of the status checkbox
@@ -153,8 +153,7 @@ cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </labe
 cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
 //cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" > Reset <br>" << endl;
 
-cout << "<input type=\"checkbox\" name=\"expsReset\" value=\"YES\""
-      << ( expsReset=="YES" ? "checked":"") << "/> Reset ";	// is the pwr_cmd="on"?
+cout << "<input type=\"checkbox\" name=\"expsReset\" " << (isReset ? "checked":"") << "/> Reset ";	// is the pwr_cmd="on"?
 
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
 
@@ -212,8 +211,9 @@ cout <<  "</html>" << endl;
 //   it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
 //   expsReset = it->getValue();          // otherwise use submitted value
 
-if (expsReset=="YES")
-{
+if (isReset){
+
+      cout << "<div> Resetting the exposure count to 0  "  << "</div>";
   ofstream myfile2 (ss.str().c_str());
   if (myfile2.is_open())
   {
@@ -221,8 +221,10 @@ if (expsReset=="YES")
     myfile2.close();
   }
   else cout << "Unable to open file";
- }
 
+
+   }
+ 
    // Process the form data to trigger the Power or LED state
    if (pwr_cmd=="on")
     {
@@ -247,7 +249,6 @@ if (expsReset=="YES")
 
     cout << "<div> The exposure count file is " << ss.str() << "</div>";
     cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
-    cout << "<div> The exposure count reset value is  " << expsReset << "</div>";
 
 
 
