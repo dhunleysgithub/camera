@@ -35,7 +35,7 @@ fs.close();
 ofstream myfile;
    int i;
    Cgicc form;                                     // the CGI form object
-   string pwr_cmd, command, exposureCount, exposuresRequested;
+   string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset;
 
 myfile.open ("example.html");
 
@@ -67,7 +67,8 @@ myfile.open ("example.html");
    
    char *value = getenv("REMOTE_ADDR");	           // The remote address CGI env. variable
 
-
+//  expsReset = "No";
+  exposuresReset = "Yes";
 
 // Generate the form but use states that are set in the form that was submitted
    cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
@@ -141,7 +142,8 @@ cout <<  "<input id=\"element_1\" name=\"multexpreq\" class=\"element text small
 cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
-cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/><br>" << endl;
+cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
+cout <<  "<input name=\"expsReset\" type=\"checkbox\" value=\""<< exposuresReset << "\"/><br>" << endl;
 
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
 
@@ -184,7 +186,7 @@ cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
         << ( command=="singleadv" ? "checked":"") << "/> Single Adv. <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
         << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
-cout << "<input type=\"submit\" value=\"Execute Command\" />";
+cout << "<input type=\"submit\" value=\"Process Selections\" />";
 cout <<  "</div>" << endl;
 
 
@@ -219,8 +221,9 @@ cout <<  "</html>" << endl;
      cout << "<div> Ran a single exposure ! </div>";
     }
 
-	cout << "<div> The exposure count file is " << ss.str() << "</div>";
+    cout << "<div> The exposure count file is " << ss.str() << "</div>";
     cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
+    cout << "<div> The exposure count reset value is  " << expsReset << "</div>";
 
 
 
