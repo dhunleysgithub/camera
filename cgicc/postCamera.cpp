@@ -223,7 +223,7 @@ cout <<  "</html>" << endl;
 
     cout << "<div> The exposure count file is " << ss.str() << "</div>";
     cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
-    cout << "<div> The exposure count reset value is  " << expsReset << "</div>";
+    cout << "<div> The exposure count reset value is  " << exposuresReset << "</div>";
 
 
 
