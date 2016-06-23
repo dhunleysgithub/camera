@@ -153,7 +153,7 @@ cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </labe
 cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
 //cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" > Reset <br>" << endl;
 
-cout << "<input type=\"radio\" name=\"expsReset\" value=\"YES\""
+cout << "<input type=\"checkbox\" name=\"expsReset\" value=\"YES\""
       << ( expsReset=="YES" ? "checked":"") << "/> Reset ";	// is the pwr_cmd="on"?
 
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
