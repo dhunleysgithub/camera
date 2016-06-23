@@ -40,7 +40,7 @@ ofstream myfile;
       
    form_iterator it = form.getElement("expsReset");   // get the period text value
  
-   if (it == form.getElements().end() || it->getValue()==""){
+   if (it == form.getElements().end() || it->getValue()=="")
   {
      // do nothing
   }
@@ -63,7 +63,7 @@ ofstream myfile;
 
    }
 }
-   }
+   
    myfile.open ("example.html");
 
    //bool isStatus = form.queryCheckbox("status");   // get the state of the status checkbox
