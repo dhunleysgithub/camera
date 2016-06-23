@@ -63,7 +63,7 @@ ofstream myfile;
 
    }
 }
-   
+   }
    myfile.open ("example.html");
 
    //bool isStatus = form.queryCheckbox("status");   // get the state of the status checkbox
