@@ -145,7 +145,7 @@ cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </la
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
-cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" checked><br>" << endl;
+cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" ><br>" << endl;
 
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
 
