@@ -209,6 +209,16 @@ cout <<  "</div>" << endl;
 cout <<  "</body>" << endl;
 cout <<  "</html>" << endl;
 
+if (expsReset=="YES")
+{
+  ofstream myfile2 (ss.str().c_str());
+  if (myfile2.is_open())
+  {
+    myfile2 << 0;
+    myfile2.close();
+  }
+  else cout << "Unable to open file";
+ }
 
    // Process the form data to trigger the Power or LED state
    if (pwr_cmd=="on")
