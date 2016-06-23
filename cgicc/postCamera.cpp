@@ -67,8 +67,10 @@ myfile.open ("example.html");
    
    char *value = getenv("REMOTE_ADDR");	           // The remote address CGI env. variable
 
-//  expsReset = "No";
-  exposuresReset = "Yes";
+//  it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
+//  exposuresRequested = it->getValue();
+  expsReset = "No";
+//  exposuresReset = "No";
 
 // Generate the form but use states that are set in the form that was submitted
    cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
@@ -143,7 +145,7 @@ cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </la
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
-cout <<  "<input name=\"expsReset\" type=\"checkbox\" value=\""<< exposuresReset << "\"/><br>" << endl;
+cout <<  "<input name=\"expsReset\" type=\"checkbox\" value=\""<< exposuresReset << "\" checked><br>" << endl;
 
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
 
