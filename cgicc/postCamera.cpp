@@ -67,7 +67,7 @@ myfile.open ("example.html");
 
    it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
    if (it == form.getElements().end() || it->getValue()==""){
-      expsReset = "hold exposures count"; // if it is invalid use 100
+      expsReset = "No"; // if it is invalid use 100
    }
    else { expsReset = it->getValue(); }          // otherwise use submitted value
    
@@ -153,8 +153,8 @@ cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </labe
 cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
 //cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" > Reset <br>" << endl;
 
-cout << "<input type=\"radio\" name=\"expsReset\" value=\"hold exposures count\""
-      << ( expsReset=="hold exposures count" ? "checked":"") << "/> Reset ";	// is the pwr_cmd="on"?
+cout << "<input type=\"radio\" name=\"expsReset\" value=\"yes\""
+      << ( expsReset=="yes" ? "checked":"") << "/> Reset ";	// is the pwr_cmd="on"?
 
 cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
 
