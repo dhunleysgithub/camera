@@ -231,7 +231,7 @@ cout <<  "</html>" << endl;
      cout << "<div> pwr_cmd = off! </div>";
     }
     else cout << "<div> Invalid command! </div>";        // not possible at the moment
-
+isReset = form.queryCheckbox("expsReset");
           if (isReset){
 
   cout << "<div> Resetting the exposure count to 0  "  << "</div>";
