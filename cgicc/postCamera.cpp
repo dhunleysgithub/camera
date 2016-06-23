@@ -213,15 +213,18 @@ cout <<  "</html>" << endl;
 
 if (isReset){
 
-      cout << "<div> Resetting the exposure count to 0  "  << "</div>";
+  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
   ofstream myfile2 (ss.str().c_str());
   if (myfile2.is_open())
   {
     myfile2 << 0;
     myfile2.close();
   }
-  else cout << "Unable to open file";
-
+  else {
+     //cout << "Unable to open file";
+     cout << "<div> Unable to reset exposure count to 0  "  << "</div>";
+     cout << "<div> Unable to open file  "  << "</div>";
+   }
 
    }
  
