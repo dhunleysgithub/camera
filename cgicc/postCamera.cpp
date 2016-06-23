@@ -35,7 +35,7 @@ fs.close();
 ofstream myfile;
    int i;
    Cgicc form;                                     // the CGI form object
-   string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset;
+   string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
 
 myfile.open ("example.html");
 
@@ -69,7 +69,7 @@ myfile.open ("example.html");
 
 //  it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
 //  exposuresRequested = it->getValue();
-//  expsReset = "No";
+  expsReset = "No";
 //  exposuresReset = "No";
 
 // Generate the form but use states that are set in the form that was submitted
