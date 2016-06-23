@@ -69,7 +69,7 @@ myfile.open ("example.html");
 
 //  it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
 //  exposuresRequested = it->getValue();
-  expsReset = "No";
+//  expsReset = "No";
 //  exposuresReset = "No";
 
 // Generate the form but use states that are set in the form that was submitted
