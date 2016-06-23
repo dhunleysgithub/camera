@@ -37,12 +37,14 @@ ofstream myfile;
    Cgicc form;                                     // the CGI form object
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
    bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
-      
+   
+ 
+   
    
    myfile.open ("example.html");
 
    //bool isStatus = form.queryCheckbox("status");   // get the state of the status checkbox
-   it = form.getElement("pwr_cmd");   // get the period text value
+   form_iterator it = form.getElement("pwr_cmd");   // get the period text value
    if (it == form.getElements().end() || it->getValue()==""){
       pwr_cmd = "off";                         // if it is invalid use 100
    }
@@ -233,7 +235,7 @@ cout <<  "</html>" << endl;
     if (command=="single")
     {
        
-   if (isReset){
+         if (isReset){
 
   cout << "<div> Resetting the exposure count to 0  "  << "</div>";
   ofstream myfile2 (ss.str().c_str());
@@ -249,8 +251,7 @@ cout <<  "</html>" << endl;
    }
 
    }
-}
-  
+
    
      i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
      cout << "<div> Ran a single exposure ! </div>";
