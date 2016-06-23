@@ -209,6 +209,9 @@ cout <<  "</div>" << endl;
 cout <<  "</body>" << endl;
 cout <<  "</html>" << endl;
 
+   it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
+   expsReset = it->getValue();          // otherwise use submitted value
+
 if (expsReset=="YES")
 {
   ofstream myfile2 (ss.str().c_str());
