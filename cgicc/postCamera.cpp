@@ -235,7 +235,12 @@ cout <<  "</html>" << endl;
     if (command=="single")
     {
        
-         if (isReset){
+  
+     i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
+     cout << "<div> Ran a single exposure ! </div>";
+    }
+
+        if (isReset){
 
   cout << "<div> Resetting the exposure count to 0  "  << "</div>";
   ofstream myfile2 (ss.str().c_str());
@@ -252,11 +257,7 @@ cout <<  "</html>" << endl;
 
    }
 
-   
-     i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
-     cout << "<div> Ran a single exposure ! </div>";
-    }
-
+  
     cout << "<div> The exposure count file is " << ss.str() << "</div>";
     cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
 
