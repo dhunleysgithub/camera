@@ -57,7 +57,6 @@ ofstream myfile (ss.str().c_str());
   }
   else cout << "Unable to open file";
 
-system("echo")
 // P9_21 is Pin Number 6
    PWM pwm_apos("pwm_test_P9_21.17");      // P9_21 MUST be loaded as a slot before use
    pwm_apos.setPeriod(50000);              // Set the period in ns
