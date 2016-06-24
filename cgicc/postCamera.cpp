@@ -27,23 +27,13 @@ fs >> number;
 ostringstream temp;  //temp as in temporary
 temp<<number;
 exposureCount1=temp.str();      //str is temp as string
-//exposureCount=ss.str();      //str is temp as string
-//cout << "The integer number value was " << number << " exposure counts." << endl;
-//cout << "The string number number value was " << number << " exposure counts." << endl;
 fs.close();
 
-ofstream myfile;
    int i;
    Cgicc form;                                     // the CGI form object
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
    bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
    
- 
-   
-   
-   myfile.open ("example.html");
-
-   //bool isStatus = form.queryCheckbox("status");   // get the state of the status checkbox
    form_iterator it = form.getElement("pwr_cmd");   // get the period text value
    if (it == form.getElements().end() || it->getValue()==""){
       pwr_cmd = "off";                         // if it is invalid use 100
@@ -77,20 +67,11 @@ ofstream myfile;
    
    char *value = getenv("REMOTE_ADDR");	           // The remote address CGI env. variable
 
-//  it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
-//  exposuresRequested = it->getValue();
- // expsReset = "No";
-//  exposuresReset = "No";
-
 // Generate the form but use states that are set in the form that was submitted
-   cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
-//   cout << html() << head() << title("EBB C++ Post Power Example") << head() << endl;
- //  cout << body() << h1("BeagleBone POST Camera Example") << endl;;
-
-//cout << "<form action=\"\">\n";
+cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
+cout << html() << head() << title("EBB C++ Post Camera Baseline") << head() << endl;
+cout << body() << h1("BeagleBone POST Camera Baseline") << endl;;
 cout << "<form action=\"/cgi-bin/postCamera.cgi\" method=\"POST\">\n";
-//cout << "<input type=\"submit\" value=\"Execute Command\" onclick=\"/cgi-bin/postCamera.cgi\" method=\"POST\">\n";
-//cout << "</form>\n";
 cout <<  "<style>" << endl;
 cout <<  "#header {" << endl;
 cout <<  "    background-color:blue;" << endl;
@@ -98,8 +79,6 @@ cout <<  "    color:white;" << endl;
 cout <<  "    text-align:center;" << endl;
 cout <<  "    padding:5px;" << endl;
 cout <<  "}" << endl;
-
-
 cout <<  "#nav {" << endl;
 cout <<  "    line-height:30px;" << endl;
 cout <<  "    background-color:#99ccff;" << endl;
@@ -138,11 +117,10 @@ cout <<  "    padding:5px;" << endl;
 cout <<  "}" << endl;
 cout <<  "</style>" << endl;
 cout <<  "</head>" << endl;
+
 cout <<  "<body>" << endl;
-
-
 cout <<  "<div id=\"header\">" << endl;
-cout <<  "<h1>Hunley's June 21th, 2016 Eng Inc.</h1>" << endl;
+cout <<  "<h1>Hunley's June 24th, 2016 Eng Inc.</h1>" << endl;
 cout <<  "</div>" << endl;
 
 cout <<  "<div id=\"nav\">" << endl;
@@ -201,16 +179,14 @@ cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
 cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
         << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
 cout << "<input type=\"submit\" value=\"Process Selections\" />";
-cout <<  "</div>" << endl;
+
+cout << "</div></form>";
 
 
 
 cout <<  "<div id=\"footer\">" << endl;
 cout <<  "Serial Number: XYZ Phone: 480-406-9804 Email: dwight_hunley@hotmail.com" << endl;
 cout <<  "</div>" << endl;
-
-cout <<  "</body>" << endl;
-cout <<  "</html>" << endl;
 
 //   it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
 //   expsReset = it->getValue();          // otherwise use submitted value
@@ -260,12 +236,9 @@ cout <<  "</html>" << endl;
     cout << "<div> The exposure count file is " << ss.str() << "</div>";
     cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
 
-
-
-myfile <<  "temp file myfile" << endl;
-
-
-  myfile.close();
+   cout << "<div> The CGI REMOTE_ADDR environment variable is " << value << "</div>";
+   cout << body() << html();
+   
   return 0;
 
 }
