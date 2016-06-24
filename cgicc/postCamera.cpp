@@ -125,6 +125,7 @@ cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </la
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
 
+// reset is requested
 myfile2.open();
   if (myfile2.is_open())
   {
