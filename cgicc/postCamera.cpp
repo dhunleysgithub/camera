@@ -22,12 +22,7 @@ int number;
 stringstream ss;
 ss << exposureCount_PATH;
 fstream fs;
-fs.open(ss.str().c_str(), fstream::in);
-fs >> number;
-ostringstream temp;  //temp as in temporary
-temp<<number;
-exposureCount1=temp.str();      //str is temp as string
-fs.close();
+ofstream myfile2 (ss.str().c_str());
 
    int i;
    Cgicc form;                                     // the CGI form object
@@ -47,12 +42,9 @@ fs.close();
 
    it = form.getElement("exposures");   // get the existing number of exposures executed value
    if (it == form.getElements().end() || it->getValue()==""){
-      //exposureCount = "0";                         // if it is invalid use 100
-      exposureCount = exposureCount1;
+      exposureCount = "0";
    }
-   else { exposureCount = it->getValue(); }          // otherwise use submitted value
-      exposureCount = exposureCount1;
-   
+
    it = form.getElement("multexpreq");   // get the exisitng number of exposures executed value
    if (it == form.getElements().end() || it->getValue()==""){
       exposuresRequested = "0"; // if it is invalid use 100
@@ -132,6 +124,26 @@ cout <<  "<input id=\"element_1\" name=\"multexpreq\" class=\"element text small
 cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
+
+myfile2.open();
+  if (myfile2.is_open())
+  {
+    myfile2 << 0;
+    myfile2.close();
+  }
+  else {
+     //cout << "Unable to open file";
+     cout << "<div> Unable to reset exposure count to 0  "  << "</div>";
+     cout << "<div> Unable to open file  "  << "</div>";
+   }
+   
+fs.open(ss.str().c_str(), fstream::in);
+fs >> number;
+ostringstream temp;  //temp as in temporary
+temp<<number;
+exposureCount=temp.str();      //str is temp as string
+fs.close();
+
 cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
 //cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" > Reset <br>" << endl;
 
@@ -210,18 +222,8 @@ cout <<  "</div>" << endl;
 //isReset = form.queryCheckbox("expsReset");
           if (isReset){
 
-  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
-  ofstream myfile2 (ss.str().c_str());
-  if (myfile2.is_open())
-  {
-    myfile2 << 1;
-    myfile2.close();
-  }
-  else {
-     //cout << "Unable to open file";
-     cout << "<div> Unable to reset exposure count to 0  "  << "</div>";
-     cout << "<div> Unable to open file  "  << "</div>";
-   }
+//  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
+
 
    }
 
