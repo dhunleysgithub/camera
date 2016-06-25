@@ -22,7 +22,6 @@ int number;
 stringstream ss;
 ss << exposureCount_PATH;
 fstream fs;
-ofstream myfile2 (ss.str().c_str());
 
    int i, ierr;
    ierr=0;
@@ -130,7 +129,7 @@ cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </labe
 isReset = form.queryCheckbox("expsReset");
 if (isReset){
 //  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
-  myfile2.open();
+ ofstream myfile2 (ss.str().c_str());
   if (myfile2.is_open())
   {
     myfile2 << 0;
