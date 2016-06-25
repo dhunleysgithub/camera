@@ -24,7 +24,8 @@ ss << exposureCount_PATH;
 fstream fs;
 ofstream myfile2 (ss.str().c_str());
 
-   int i;
+   int i, ierr;
+   ierr=0;
    Cgicc form;                                     // the CGI form object
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
    bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
@@ -126,18 +127,22 @@ cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\
 cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
 
 // reset is requested
-myfile2.open();
+isReset = form.queryCheckbox("expsReset");
+if (isReset){
+//  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
+  myfile2.open();
   if (myfile2.is_open())
   {
     myfile2 << 0;
     myfile2.close();
+    ierr=0;
   }
   else {
-     //cout << "Unable to open file";
-     cout << "<div> Unable to reset exposure count to 0  "  << "</div>";
-     cout << "<div> Unable to open file  "  << "</div>";
-   }
+   ierr=1;
    
+   }
+          }
+          
 fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
 ostringstream temp;  //temp as in temporary
@@ -220,14 +225,6 @@ cout <<  "</div>" << endl;
      cout << "<div> pwr_cmd = off! </div>";
     }
     else cout << "<div> Invalid command! </div>";        // not possible at the moment
-//isReset = form.queryCheckbox("expsReset");
-          if (isReset){
-
-//  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
-
-
-   }
-
   
   //  if (command=="single" && !isReset)
     if (command=="single")
@@ -236,6 +233,17 @@ cout <<  "</div>" << endl;
      cout << "<div> Ran a single exposure ! </div>";
     }
 
+if (isReset){
+ if (ierr==0)
+ {
+  cout << "<div> Reset the exposure count to 0  "  << "</div>";
+  }
+  else {
+   ierr=1;
+   cout << "<div> *** Unable to reset exposure count to 0  "  << "</div>";
+   }
+    }
+          
     cout << "<div> The exposure count file is " << ss.str() << "</div>";
     cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
 
