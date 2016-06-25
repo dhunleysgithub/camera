@@ -17,7 +17,7 @@ using namespace cgicc;
 int main()
  {
 
-string exposureCount1;
+string logoutput;
 int number;
 stringstream ss;
 ss << exposureCount_PATH;
@@ -116,32 +116,51 @@ cout <<  "<h1>Hunley's June 24th, 2016 Eng Inc.</h1>" << endl;
 cout <<  "</div>" << endl;
 
 cout <<  "<div id=\"nav\">" << endl;
-cout <<  "<h2>Control </h2>" << endl;
-cout <<  "<label class=\"description\" for=\"element_1\">Exposure Time : </label>" << endl;
-cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\" maxlength=\"25\" value=\"\"/><br>" << endl;
-cout <<  "<label class=\"description\" for=\"element_1\">Multiple Exp. : </label>" << endl;
-cout <<  "<input id=\"element_1\" name=\"multexpreq\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"25\" value=\""<< exposuresRequested << "\"/><br>" << endl;
-cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </label>" << endl;
-cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
-cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
+cout <<  "<h2>Command Selection </h2>" << endl;
+cout << "<input type=\"radio\" name=\"command\" value=\"single\""
+      << ( command=="single" ? "checked":"") << "/> Single <br>";	// is the command="on"?
+cout << "<input type=\"radio\" name=\"command\" value=\"multiple\""
+       << ( command=="multiple" ? "checked":"") << "/> Multiple <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"load\""
+        << ( command=="load" ? "checked":"") << "/> Load <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"unload\""
+        << ( command=="unload" ? "checked":"") << "/> Unload <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
+        << ( command=="singleadv" ? "checked":"") << "/> Single Adv. <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
+        << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"expreset\""
+        << ( command=="expreset" ? "checked":"") << "/> Reset Exposure Counter <br>";
+cout << "<input type=\"submit\" value=\"Process Selections\" />";
+cout << "</div>";
 
-// reset is requested
-isReset = form.queryCheckbox("expsReset");
-if (isReset){
-//  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
- ofstream myfile2 (ss.str().c_str());
-  if (myfile2.is_open())
-  {
-    myfile2 << 0;
-    myfile2.close();
-    ierr=0;
-  }
-  else {
-   ierr=1;
-   
+// Reset Exposure Count Requested
+
+  if ( command=="expreset"){
+   //  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
+   ofstream myfile2 (ss.str().c_str());
+   if (myfile2.is_open())
+    {
+      myfile2 << 0;
+      myfile2.close();
+      logoutput = "Reset the exposure count to 0";
    }
+   else {
+    cout << "<div> *** Unable to reset exposure count to 0  "  << "</div>";
+    }
           }
-          
+
+// Single Exposure Requested
+
+   if (command=="single")
+    {
+     i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
+     logoutput = "Ran a single exposure ";
+    }
+
+
+// Read exposure counter value
+
 fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
 ostringstream temp;  //temp as in temporary
@@ -149,22 +168,7 @@ temp<<number;
 exposureCount=temp.str();      //str is temp as string
 fs.close();
 
-cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/>" << endl;
-//cout <<  "<input  type=\"checkbox\" name=\"expsReset\" value=\"Yes\" > Reset <br>" << endl;
-
-cout << "<input type=\"checkbox\" name=\"expsReset\" " << (isReset ? "checked":"") << "/> Reset ";	// is the pwr_cmd="on"?
-
-cout <<  "<button type=\"button\" onclick=\"alert('Hello world!')\">Click Me!</button><br>" << endl;
-
-cout <<  "<label class=\"description\" for=\"element_1\">Frame Count : </label>" << endl;
-
-cout <<  "<button type=\"button\" onclick=\"/cgi-bin/helloworld.sh\"  method=\"POST\">run helloworld.sh!</button><br>" << endl;
-
-cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
-cout <<  "<label class=\"description\" for=\"element_1\">Film Used : </label>" << endl;
-cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
-cout <<  "</div>" << endl;
-
+// 5V Power Control Panel
 
 cout <<  "<div id=\"nav2\">" << endl;
 cout <<  "<h2>Board 5V Power </h2>" << endl;
@@ -182,22 +186,20 @@ cout <<  "</div>" << endl;
 
 
 cout <<  "<div id=\"nav3\">" << endl;
-cout <<  "<h2>Command Selection </h2>" << endl;
-cout << "<input type=\"radio\" name=\"command\" value=\"single\""
-      << ( command=="single" ? "checked":"") << "/> Single <br>";	// is the command="on"?
-cout << "<input type=\"radio\" name=\"command\" value=\"multiple\""
-       << ( command=="multiple" ? "checked":"") << "/> Multiple <br>";
-cout << "<input type=\"radio\" name=\"command\" value=\"load\""
-        << ( command=="load" ? "checked":"") << "/> Load <br>";
-cout << "<input type=\"radio\" name=\"command\" value=\"unload\""
-        << ( command=="unload" ? "checked":"") << "/> Unload <br>";
-cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
-        << ( command=="singleadv" ? "checked":"") << "/> Single Adv. <br>";
-cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
-        << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
-cout << "<input type=\"submit\" value=\"Process Selections\" />";
-
-cout << "</div></form>";
+cout <<  "<h2>Control </h2>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Exposure Time : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\" maxlength=\"25\" value=\"\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Multiple Exp. : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"multexpreq\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"25\" value=\""<< exposuresRequested << "\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Frame Count : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Film Used : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
+cout <<  "</div></form>" << endl;
 
 
 
@@ -205,11 +207,8 @@ cout <<  "<div id=\"footer\">" << endl;
 cout <<  "Serial Number: XYZ Phone: 480-406-9804 Email: dwight_hunley@hotmail.com" << endl;
 cout <<  "</div>" << endl;
 
-//   it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
-//   expsReset = it->getValue();          // otherwise use submitted value
-
  
-   // Process the form data to trigger the Power or LED state
+   // Process the 5V Power Control form data
    if (pwr_cmd=="on")
     {
      i = system("echo 65 > /sys/class/gpio/export");
@@ -225,29 +224,10 @@ cout <<  "</div>" << endl;
     }
     else cout << "<div> Invalid command! </div>";        // not possible at the moment
   
-    if (command=="single" && !isReset)
-    {
-     i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
-     cout << "<div> Ran a single exposure ! </div>";
-    }
-    else
-    {
-      cout << "<div> Skipped running a single exposure due to reset request </div>";
-    }
-
-if (isReset){
- if (ierr==0)
- {
-  cout << "<div> Reset the exposure count to 0  "  << "</div>";
-  }
-  else {
-   ierr=1;
-   cout << "<div> *** Unable to reset exposure count to 0  "  << "</div>";
-   }
-    }
+ 
           
-    cout << "<div> The exposure count file is " << ss.str() << "</div>";
-    cout << "<div> The exposure count is  " << exposureCount1 << "</div>";
+         
+   cout << "<div> " << logoutput   << "</div>";
 
    cout << "<div> The CGI REMOTE_ADDR environment variable is " << value << "</div>";
    cout << body() << html();
