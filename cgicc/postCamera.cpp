@@ -15,7 +15,7 @@ using namespace cgicc;
 #define exposureCount_PATH "/root/expcounts.txt"
 
 int main()
-{
+ {
 
 string exposureCount1;
 int number;
