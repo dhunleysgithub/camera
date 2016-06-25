@@ -225,11 +225,14 @@ cout <<  "</div>" << endl;
     }
     else cout << "<div> Invalid command! </div>";        // not possible at the moment
   
-  //  if (command=="single" && !isReset)
-    if (command=="single")
+    if (command=="single" && !isReset)
     {
      i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
      cout << "<div> Ran a single exposure ! </div>";
+    }
+    else
+    {
+      cout << "<div> Skipped running a single exposure due to reset request </div>";
     }
 
 if (isReset){
