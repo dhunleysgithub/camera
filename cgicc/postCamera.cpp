@@ -13,6 +13,7 @@ using namespace std;
 using namespace cgicc;
 
 #define exposureCount_PATH "/root/expcounts.txt"
+int str2int(const string &str);
 
 int main()
  {
@@ -23,8 +24,9 @@ stringstream ss;
 ss << exposureCount_PATH;
 fstream fs;
 
-   int i, ierr;
+   int i, ierr, iexposuresRequested;
    ierr=0;
+   iexposuresRequested=0;
    Cgicc form;                                     // the CGI form object
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
    bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
@@ -158,6 +160,20 @@ cout << "</div>";
      logoutput = "Ran a single exposure ";
     }
 
+// Multiple Exposures Requested
+
+   if (command=="multiple")
+    {
+     iexposuresRequested = str2int(exposuresRequested);
+     
+     for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
+      {
+       cout << "<div> Running exposure number " << a << "</div>";
+       i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
+      }
+     logoutput = "Ran " + exposuresRequested + "exposures ";
+
+    }
 
 // Read exposure counter value
 
@@ -234,4 +250,14 @@ cout <<  "</div>" << endl;
    
   return 0;
 
+}
+
+int str2int (const string &str) {
+  stringstream ss(str);
+  int num;
+  if((ss >> num).fail())
+  {
+      //ERROR
+  }
+  return num;
 }
