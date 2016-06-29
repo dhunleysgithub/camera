@@ -160,20 +160,11 @@ cout << "</div>";
      logoutput = "Ran a single exposure ";
     }
 
-// Multiple Exposures Requested
-
-   if (command=="multiple")
-    {
-     iexposuresRequested = str2int(exposuresRequested);
-     
-     for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
-      {
-       cout << "<div> Running exposure number " << a << "</div>";
-       i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
-      }
-     logoutput = "Ran " + exposuresRequested + "exposures ";
-
-    }
+ //iexposuresRequested = str2int(exposuresRequested);
+ // Multiple Exposures Requested
+ string mcmd = "nice -20 /root/camera/shutter_openloop/shutter_openloop " + exposuresRequested;
+ i = system(mcmd);
+ logoutput = "Running " + exposuresRequested + "exposures ";
 
 // Read exposure counter value
 
