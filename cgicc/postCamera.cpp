@@ -162,7 +162,7 @@ cout << "</div>";
 
  //iexposuresRequested = str2int(exposuresRequested);
  // Multiple Exposures Requested
- string mcmd = "nice -20 /root/camera/shutter_openloop/shutter_openloop " + exposuresRequested;
+ string mcmd = "/root/camera/shutter_openloop/run_shutter_ol.sh " + exposuresRequested;
  i = system(mcmd);
  logoutput = "Running " + exposuresRequested + "exposures ";
 
