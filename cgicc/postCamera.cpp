@@ -184,8 +184,8 @@ cout << "</div>";
       
       for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
        {
-        cout << "<div> Running exposure number " << a << "</div>";
-        i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
+        //cout << "<div> Running exposure number " << a << "</div>";
+        i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop 100");
        }
       logoutput = "Ran " + exposuresRequested + "exposures ";
  
