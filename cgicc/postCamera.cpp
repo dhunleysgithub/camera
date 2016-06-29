@@ -29,6 +29,8 @@ fstream fs;
    iexposuresRequested=0;
    Cgicc form;                                     // the CGI form object
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
+   string mcmd;
+   
    bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
    
    form_iterator it = form.getElement("pwr_cmd");   // get the period text value
@@ -162,10 +164,14 @@ cout << "</div>";
 
  //iexposuresRequested = str2int(exposuresRequested);
  // Multiple Exposures Requested
- string mcmd = "/root/camera/shutter_openloop/run_shutter_ol.sh " + exposuresRequested;
- i = system(mcmd);
- logoutput = "Running " + exposuresRequested + "exposures ";
-
+ 
+   if (command=="multiple")
+    {
+     mcmd = "/root/camera/shutter_openloop/run_shutter_ol.sh " + exposuresRequested;
+     i = system(mcmd);
+     logoutput = "Running " + exposuresRequested + "exposures ";
+    }
+    
 // Read exposure counter value
 
 fs.open(ss.str().c_str(), fstream::in);
