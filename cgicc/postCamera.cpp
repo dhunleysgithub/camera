@@ -172,7 +172,7 @@ cout << "</div>";
      mcmd_str = "/root/camera/run_shutter_ol.sh " + exposuresRequested;
      mcmd_char = mcmd_str.c_str();
     // i = system(mcmd_char);
-     i = system("cd /usr/lib/cgi-bin; echo 'Hi Dwight Cur Wdir is ';pwd;./run_shutter_ol.sh 10 >> ttt; cat ttt;echo damnit > ttt; cat ttt");
+     i = system("cd /usr/lib/cgi-bin; echo 'Hi Dwight Cur Wdir is ';pwd;'./run_shutter_ol.sh 10' >> ttt; cat ttt;echo damnit > ttt; cat ttt");
      logoutput = "Running " + exposuresRequested + " exposures \n using system call argument " + mcmd_str;
     }
     
