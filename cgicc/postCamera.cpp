@@ -167,16 +167,29 @@ cout << "</div>";
  //iexposuresRequested = str2int(exposuresRequested);
  // Multiple Exposures Requested
  
-   if (command=="multiple")
-    {
-     mcmd_str = "/root/camera/run_shutter_ol.sh " + exposuresRequested;
-     mcmd_char = mcmd_str.c_str();
-    // i = system(mcmd_char);
-     i = system("cd /usr/lib/cgi-bin; echo 'Hi Dwight Cur Wdir is ';pwd;'./run_shutter_ol.sh 10' >> ttt; cat ttt;echo damnit > ttt; cat ttt");
-     logoutput = "Running " + exposuresRequested + " exposures \n using system call argument " + mcmd_str;
-    }
+//   if (command=="multiple")
+//    {
+//     mcmd_str = "/root/camera/run_shutter_ol.sh " + exposuresRequested;
+//     mcmd_char = mcmd_str.c_str();
+//    // i = system(mcmd_char);
+//     i = system("cd /usr/lib/cgi-bin; echo 'Hi Dwight Cur Wdir is ';pwd;'./run_shutter_ol.sh 10' >> ttt; cat ttt;echo damnit > ttt; cat ttt");
+//     logoutput = "Running " + exposuresRequested + " exposures \n using system call argument " + mcmd_str;
+//    }
     
-// Read exposure counter value
+// Multiple Exposures Requested
+ 
+    if (command=="multiple")
+     {
+      iexposuresRequested = str2int(exposuresRequested);
+      
+      for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
+       {
+        cout << "<div> Running exposure number " << a << "</div>";
+        i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
+       }
+      logoutput = "Ran " + exposuresRequested + "exposures ";
+ 
+     }// Read exposure counter value
 
 fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
