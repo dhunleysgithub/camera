@@ -29,7 +29,8 @@ fstream fs;
    iexposuresRequested=0;
    Cgicc form;                                     // the CGI form object
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
-   string mcmd;
+   string mcmd_str;
+   const char* mcmd_char;
    
    bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
    
@@ -167,8 +168,9 @@ cout << "</div>";
  
    if (command=="multiple")
     {
-     mcmd = "/root/camera/shutter_openloop/run_shutter_ol.sh " + exposuresRequested;
-     i = system(mcmd);
+     mcmd_str = "/root/camera/shutter_openloop/run_shutter_ol.sh " + exposuresRequested;
+     mcmd_char = mcmd_str.c_str();
+     i = system(mcmd_char);
      logoutput = "Running " + exposuresRequested + "exposures ";
     }
     
