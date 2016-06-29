@@ -171,7 +171,8 @@ cout << "</div>";
     {
      mcmd_str = "/root/camera/run_shutter_ol.sh " + exposuresRequested;
      mcmd_char = mcmd_str.c_str();
-     i = system(mcmd_char);
+    // i = system(mcmd_char);
+     i = system("/root/camera/run_shutter_ol.sh 10");
      logoutput = "Running " + exposuresRequested + " exposures \n using system call argument " + mcmd_str;
     }
     
