@@ -28,6 +28,7 @@ fstream fs;
    ierr=0;
    iexposuresRequested=0;
    Cgicc form;                                     // the CGI form object
+   
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
    string mcmd_str;
    const char* mcmd_char;
