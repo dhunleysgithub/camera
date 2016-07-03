@@ -45,7 +45,7 @@ std::cout << " At 1 " << std::endl;
    pwm_apos.setPolarity(PWM::ACTIVE_HIGH);  // using active low PWM
    pwm_apos.run();                          // start the PWM output
    usleep(10000);
-
+ std::cout << " At 1d " << std::endl;
    PWM pwm_aneg("pwm_test_P9_14.15");       // P8_13 MUST be loaded as a slot before use
    pwm_aneg.setPeriod(500000);              // Set the period in ns
    pwm_aneg.setDutyCycle(0.0f);            // Set the duty cycle as a percentage
@@ -54,13 +54,15 @@ std::cout << " At 1 " << std::endl;
    usleep(10000);
 
    PWM pwm_bpos("pwm_test_P9_16.16");       // P9_42 MUST be loaded as a slot before use
-   pwm_bpos.setDutyCycle(0.0f);             // Set the duty cycle as a percentage
+ std::cout << " At 1e" << std::endl; 
+  pwm_bpos.setDutyCycle(0.0f);             // Set the duty cycle as a percentage
    pwm_bpos.setPolarity(PWM::ACTIVE_HIGH);  // using active low PWM
    pwm_bpos.run();                          // start the PWM output
    usleep(10000);
 
    PWM pwm_bneg("pwm_test_P8_19.21");       // P8_13 MUST be loaded as a slot before use
-   pwm_bneg.setDutyCycle(0.0f);            // Set the duty cycle as a percentage
+  std::cout << " At 1f " << std::endl;
+  pwm_bneg.setDutyCycle(0.0f);            // Set the duty cycle as a percentage
    pwm_bneg.setPolarity(PWM::ACTIVE_HIGH);  // using active low PWM
    pwm_bneg.run();                          // start the PWM output
    usleep(10000); 
