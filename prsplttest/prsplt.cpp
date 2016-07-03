@@ -139,8 +139,10 @@ int main (int argc, char** argv)
 
 
      pwm_apos.setDutyCycle(0.0f);
-     std::cout << " control c now !! *** " << std::endl; 
-     usleep(50000000);
+//     std::cout << " Hit Control C to end program - Pressure plate inoperable *** " << std::endl; 
+     std::cout << " Pressure plate inoperable *** " << std::endl; 
+//     usleep(50000000);
+     usleep(500000);
 
 
 
