@@ -24,9 +24,10 @@ stringstream ss;
 ss << exposureCount_PATH;
 fstream fs;
 
-   int i, ierr, iexposuresRequested;
+   int i,j, ierr, iexposuresRequested;
    ierr=0;
    iexposuresRequested=0;
+   
    Cgicc form;                                     // the CGI form object
    
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
