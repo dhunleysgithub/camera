@@ -68,7 +68,7 @@ fstream fs;
 // Generate the form but use states that are set in the form that was submitted
 cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
 cout << html() << head() << title("EBB C++ Post Camera Baseline") << head() << endl;
-cout << body() << h1("BeagleBone POST Camera Baseline") << endl;;
+cout << body() << h1("BeagleBone Black Camera Controller") << endl;;
 cout << "<form action=\"/cgi-bin/postCamera.cgi\" method=\"POST\">\n";
 cout <<  "<style>" << endl;
 cout <<  "#header {" << endl;
@@ -118,7 +118,7 @@ cout <<  "</head>" << endl;
 
 cout <<  "<body>" << endl;
 cout <<  "<div id=\"header\">" << endl;
-cout <<  "<h1>Hunley's June 24th, 2016 Eng Inc.</h1>" << endl;
+cout <<  "<h1>Photoengineering Inc.</h1>" << endl;
 cout <<  "</div>" << endl;
 
 cout <<  "<div id=\"nav\">" << endl;
@@ -210,7 +210,7 @@ cout <<  "<h2>Format </h2>" << endl;
 cout <<  "<select>" << endl;
 cout <<  "  <option value=\"Full\">Full</option>" << endl;
 cout <<  "  <option value=\"Half\">Half</option>" << endl;
-cout <<  "  <option value=\"yada yada\">Quarter</option>" << endl;
+cout <<  "  <option value=\"tbd\">Quarter</option>" << endl;
 cout <<  "</select>" << endl;
 cout <<  "</div>" << endl;
 
