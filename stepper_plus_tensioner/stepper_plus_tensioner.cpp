@@ -46,7 +46,9 @@ std::cout << " At 1 " << std::endl;
    pwm_apos.run();                          // start the PWM output
    usleep(10000);
  std::cout << " At 1d " << std::endl;
-   PWM pwm_aneg("pwm_test_P9_14.15");       // P8_13 MUST be loaded as a slot before use
+ //  PWM pwm_aneg("pwm_test_P9_14.15");       // P8_13 MUST be loaded as a slot before use
+   PWM pwm_aneg("pwm_test_P9_22.18");       // P8_13 MUST be loaded as a slot before use
+ 
  std::cout << " At 1d1 " << std::endl;
    pwm_aneg.setPeriod(500000);              // Set the period in ns
    pwm_aneg.setDutyCycle(0.0f);            // Set the duty cycle as a percentage
