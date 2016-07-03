@@ -53,10 +53,10 @@ std::cout << " At 1 " << std::endl;
    pwm_aneg.setPolarity(PWM::ACTIVE_HIGH);  // using active low PWM
  std::cout << " At 1d2 " << std::endl;
    pwm_aneg.run();                          // start the PWM output
+ std::cout << " At 1e" << std::endl; 
    usleep(10000);
 
    PWM pwm_bpos("pwm_test_P9_16.16");       // P9_42 MUST be loaded as a slot before use
- std::cout << " At 1e" << std::endl; 
   pwm_bpos.setDutyCycle(0.0f);             // Set the duty cycle as a percentage
    pwm_bpos.setPolarity(PWM::ACTIVE_HIGH);  // using active low PWM
    pwm_bpos.run();                          // start the PWM output
