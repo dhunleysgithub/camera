@@ -14,6 +14,7 @@ using namespace exploringBB;
 using namespace std;
 
 int main(){
+std::cout << " At 0 " << std::endl;
 
    GPIO inGPIO(26);  // P8_14 
    inGPIO.setDirection(INPUT);
@@ -30,6 +31,7 @@ int main(){
 //    pwmstring="pwm_test_P8_19.21";      
 
 
+std::cout << " At 1 " << std::endl;
 
 
 
@@ -61,6 +63,7 @@ int main(){
    pwm_bneg.run();                          // start the PWM output
    usleep(10000); 
  
+std::cout << " At 2 " << std::endl;
     
  // Advance film - Stepper Motor
    
@@ -87,6 +90,7 @@ if (inputGPIO.getValue() == 1)
   while( cntr < 120 ) {
 
 // Clockwise
+std::cout << " At 3 " << std::endl;
 
  // Segment 1
    pwm_apos.setDutyCycle(0.0f);        
