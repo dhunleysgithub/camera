@@ -38,7 +38,9 @@ std::cout << " At 1 " << std::endl;
  // Stepper motor driver -  4 PWMs 
  
    PWM pwm_apos("pwm_test_P8_13.20");       // P9_42 MUST be loaded as a slot before use
+   std::cout << " At 1b " << std::endl;
    pwm_apos.setPeriod(50000);              // Set the period in ns
+   std::cout << " At 1c " << std::endl;
    pwm_apos.setDutyCycle(0.0f);             // Set the duty cycle as a percentage
    pwm_apos.setPolarity(PWM::ACTIVE_HIGH);  // using active low PWM
    pwm_apos.run();                          // start the PWM output
