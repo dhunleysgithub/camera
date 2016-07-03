@@ -16,7 +16,7 @@ using namespace cgicc;
 int str2int(const string &str);
 
 int main()
- {
+{
 
 string logoutput;
 int number;
