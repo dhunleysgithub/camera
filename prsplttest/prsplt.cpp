@@ -140,10 +140,10 @@ int main (int argc, char** argv)
 
      pwm_apos.setDutyCycle(0.0f);
 //     std::cout << " Hit Control C to end program - Pressure plate inoperable *** " << std::endl; 
-     std::cout << " Pressure plate inoperable *** " << std::endl; 
+     std::cout << " Pressure plate inoperable - Exiting Program *** " << std::endl; 
 //     usleep(50000000);
      usleep(500000);
-
+     return 1;
 
 
        if (slotsnsr_state==1) {
