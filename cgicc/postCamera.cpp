@@ -161,8 +161,11 @@ cout << "</div>";
 
    if (command=="single")
     {
-     i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
-     logoutput = "Ran a single exposure ";
+        i = system("nice -20 /root/camera/prsplttest/prsplt 0");
+        i = system("nice -20 /root/camera/stepper_plus_tensioner/stepper_plus_tensioner");
+        i = system("nice -20 /root/camera/prsplttest/prsplt 1");
+        i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
+        logoutput = "Ran a single exposure ";
     }
 
  //iexposuresRequested = str2int(exposuresRequested);
@@ -186,7 +189,10 @@ cout << "</div>";
       for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
        {
         //cout << "<div> Running exposure number " << a << "</div>";
-        i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop 100");
+        i = system("nice -20 /root/camera/prsplttest/prsplt 0");
+        i = system("nice -20 /root/camera/stepper_plus_tensioner/stepper_plus_tensioner");
+        i = system("nice -20 /root/camera/prsplttest/prsplt 1");
+        i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
        }
       logoutput = "Ran " + exposuresRequested + "exposures ";
  
