@@ -202,7 +202,8 @@ cout << "</div>";
        }
        
        logoutput = "Ran " + exposuresRequested + " exposures ";
-         
+                  cout << "<div> WTF is wrong ??? with Test Case 3 </div>"; 
+  
        pid_t  pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
          if(pid3 <= 0) 
          { 
@@ -215,8 +216,9 @@ cout << "</div>";
        break; //no  data 
        cout <<  "<div> " << c3 << "</div>";  
      } 
-     }// Read exposure counter value
-
+     }
+     
+// Read exposure counter value
 fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
 ostringstream temp;  //temp as in temporary
