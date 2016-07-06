@@ -187,7 +187,8 @@ cout << "</div>";
 // Multiple Exposures Requested
    int fd_out3; 
    int fd_in3 =0; 
- 
+   pid_t pid3 = 0;
+   
     if (command=="multiple")
      {
       iexposuresRequested = str2int(exposuresRequested);
@@ -203,7 +204,7 @@ cout << "</div>";
        */
       logoutput = "Ran " + exposuresRequested + "exposures ";
          
-         pid_t pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
+         pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
      }// Read exposure counter value
 
 fs.open(ss.str().c_str(), fstream::in);
