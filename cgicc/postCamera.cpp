@@ -192,17 +192,17 @@ cout << "</div>";
     if (command=="multiple")
      {
       iexposuresRequested = str2int(exposuresRequested);
-      /*
+      
       for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
        {
         //cout << "<div> Running exposure number " << a << "</div>";
-        i = system("nice -20 /root/camera/prsplttest/prsplt 0");
-        i = system("nice -20 /root/camera/stepper_plus_tensioner/stepper_plus_tensioner");
-        i = system("nice -20 /root/camera/prsplttest/prsplt 1");
+       // i = system("nice -20 /root/camera/prsplttest/prsplt 0");
+       // i = system("nice -20 /root/camera/stepper_plus_tensioner/stepper_plus_tensioner");
+       // i = system("nice -20 /root/camera/prsplttest/prsplt 1");
         i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
        }
-       */
-      logoutput = "Ran " + exposuresRequested + "exposures ";
+       
+       logoutput = "Ran " + exposuresRequested + " exposures ";
          
          pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
      }// Read exposure counter value
