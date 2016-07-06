@@ -286,7 +286,7 @@ cout <<  "</div>" << endl;
    cout << "<div> " << logoutput   << "</div>";
 
    cout << "<div> The CGI REMOTE_ADDR environment variable is " << value << "</div>";
-
+/*
          if(pid3 <= 0) 
          { 
            cout << "<div> Unable to exec prog Test Case 3 </div>"; 
@@ -300,7 +300,7 @@ cout <<  "</div>" << endl;
        cout <<  "<div> " << c3 << "</div>";  
      } 
 
-
+*/
    cout << body() << html();
    
   return 0;
