@@ -279,7 +279,7 @@ cout <<  "</div>" << endl;
 
          if(pid3 <= 0) 
          { 
-           cerr << "Unable to exec prog Test Case 3"; 
+           cout << "Unable to exec prog Test Case 3"; 
           } 
 
     while(1)  //read  process  output 
