@@ -187,7 +187,6 @@ cout << "</div>";
 // Multiple Exposures Requested
    int fd_out3; 
    int fd_in3 =0; 
-   pid_t pid3 = 0;
    
     if (command=="multiple")
      {
@@ -204,7 +203,18 @@ cout << "</div>";
        
        logoutput = "Ran " + exposuresRequested + " exposures ";
          
-         pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
+       pid_t  pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
+         if(pid3 <= 0) 
+         { 
+           cout << "<div> Unable to exec prog Test Case 3 </div>"; 
+          } 
+    while(1)  //read  process  output 
+     { 
+       char c3; 
+       if(read(fd_out3, &c3, 1) <= 0) 
+       break; //no  data 
+       cout <<  "<div> " << c3 << "</div>";  
+     } 
      }// Read exposure counter value
 
 fs.open(ss.str().c_str(), fstream::in);
