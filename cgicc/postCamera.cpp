@@ -279,7 +279,7 @@ cout <<  "</div>" << endl;
 
          if(pid3 <= 0) 
          { 
-           cout << "Unable to exec prog Test Case 3"; 
+           cout << "<div> Unable to exec prog Test Case 3 </div>"; 
           } 
 
     while(1)  //read  process  output 
@@ -287,7 +287,7 @@ cout <<  "</div>" << endl;
        char c3; 
        if(read(fd_out3, &c3, 1) <= 0) 
        break; //no  data 
-       cout << c3;  
+       cout <<  "<div> " << c3 << "</div>";  
      } 
 
 
