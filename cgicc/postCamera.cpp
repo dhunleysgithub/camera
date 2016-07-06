@@ -187,6 +187,7 @@ cout << "</div>";
 // Multiple Exposures Requested
    int fd_out3; 
    int fd_in3 =0; 
+   pid_t  pid3 = 0;
    
     if (command=="multiple")
      {
@@ -205,7 +206,8 @@ cout << "</div>";
                   cout << "<div> WTF is wrong ??? with Test Case 3 </div>"; 
   
   //     pid_t  pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
-       pid_t  pid3 = popen2("/usr/lib/cgi-bin/run.sh 100", &fd_in3, &fd_out3); 
+       pid3 = popen2("/usr/lib/cgi-bin/run.sh 100", &fd_in3, &fd_out3); 
+  /*   
          if(pid3 <= 0) 
          { 
            cout << "<div> Unable to exec prog Test Case 3 </div>"; 
@@ -217,6 +219,7 @@ cout << "</div>";
        break; //no  data 
        cout <<  "<div> " << c3 << "</div>";  
      } 
+     */
      }
      
 // Read exposure counter value
@@ -289,7 +292,7 @@ cout <<  "</div>" << endl;
    cout << "<div> " << logoutput   << "</div>";
 
    cout << "<div> The CGI REMOTE_ADDR environment variable is " << value << "</div>";
-/*
+
          if(pid3 <= 0) 
          { 
            cout << "<div> Unable to exec prog Test Case 3 </div>"; 
@@ -303,7 +306,7 @@ cout <<  "</div>" << endl;
        cout <<  "<div> " << c3 << "</div>";  
      } 
 
-*/
+
    cout << body() << html();
    
   return 0;
