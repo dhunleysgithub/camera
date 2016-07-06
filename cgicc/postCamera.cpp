@@ -8,12 +8,16 @@
 #include "LED.h"            // the LED class from Chapter 5 of the book 
 #include <fstream>
 #include <sstream>
+#include <unistd.h> 
+#include <sys/types.h> 
 
 using namespace std;
 using namespace cgicc;
 
 #define exposureCount_PATH "/root/expcounts.txt"
-int str2int(const string &str);
+//FUNCTION  DECLARATIONS: 
+ pid_t popen2(const char *shell_cmd, int *p_fd_in, int *p_fd_out); 
+ int str2int(const string &str);
 
 int main()
 {
@@ -181,11 +185,13 @@ cout << "</div>";
 //    }
     
 // Multiple Exposures Requested
+   int fd_out3; 
+   int fd_in3 =0; 
  
     if (command=="multiple")
      {
       iexposuresRequested = str2int(exposuresRequested);
-      
+      /*
       for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
        {
         //cout << "<div> Running exposure number " << a << "</div>";
@@ -194,8 +200,10 @@ cout << "</div>";
         i = system("nice -20 /root/camera/prsplttest/prsplt 1");
         i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
        }
+       */
       logoutput = "Ran " + exposuresRequested + "exposures ";
- 
+         
+         pid_t pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
      }// Read exposure counter value
 
 fs.open(ss.str().c_str(), fstream::in);
@@ -267,6 +275,21 @@ cout <<  "</div>" << endl;
    cout << "<div> " << logoutput   << "</div>";
 
    cout << "<div> The CGI REMOTE_ADDR environment variable is " << value << "</div>";
+
+         if(pid3 <= 0) 
+         { 
+           cerr << "Unable to exec prog Test Case 3"; 
+          } 
+
+    while(1)  //read  process  output 
+     { 
+       char c3; 
+       if(read(fd_out3, &c3, 1) <= 0) 
+       break; //no  data 
+       cout << c3;  
+     } 
+
+
    cout << body() << html();
    
   return 0;
@@ -282,3 +305,79 @@ int str2int (const string &str) {
   }
   return num;
 }
+
+//FUNCTION  DEFINITION: 
+  
+ /*  Pre:  The  shell  command  that  should  be  executed  is  passed  as  a  parameter. 
+   *            Values  of  0  for  p_fd_in  or  p_fd_out  indicates  shell  command  doesn't 
+   *            use  stin  or  stdout  respectively,  so  they  should  be  closed. 
+   *  Post:  Makes  accessible  both  the  standard  input  and  output  of  the  shell  
+   *              process  it  creates. 
+   *              Two  pipes  are  created:  one  provides  standard  input  for  the  shell   
+   *              commmand,  and  the  other  for  passing  back  its  standard  output.
+   *              The  pipe  file  descriptors  for  the  caller  to  use  are  pointed  to  by   
+   *              p_fd_in  and  p_fd_out. 
+   */       
+ pid_t popen2(const char *shell_cmd, int *p_fd_in, int *p_fd_out) 
+ { 
+    //CREATING  TWO  PIPES: 
+  int fds_processInput[2];  //pipe  for  process  input 
+  int fds_processOutput[2]; //pipe  for  process  output 
+    
+   if(pipe(fds_processInput) != 0) //create  process  input  pipe 
+     { 
+       cerr << "pipe (process input) failed\n"; 
+       exit(1); 
+     } 
+    
+   if(pipe(fds_processOutput) != 0) //create  process  output  pipe 
+     { 
+       cerr << "pipe (process output) failed\n"; 
+       exit(1); 
+     } 
+    
+   //FORKING  A  CHILD  PROCESS: 
+   pid_t pid; 
+   if((pid = fork()) < 0) 
+     { 
+       cerr << "fork failed\n"; 
+       exit(2); 
+     } 
+    
+  //CONNECT  THE  CORRECT  PIPE  ENDS  IN  THE  CHILD: 
+   if(pid == 0)  //child  process 
+     { 
+       //for  process  input  pipe: 
+       close(fds_processInput[1]);   //close  output 
+       dup2(fds_processInput[0], 0); //close  fd  0,  fd  0  =  fds_processInput[0] 
+        
+       //for  process  output  pipe: 
+       close(fds_processOutput[0]);   //close  input 
+       dup2(fds_processOutput[1], 1); //close  fd  1,  fd  1  =  fds_processOutput[1] 
+        
+  
+       execl("/bin/sh", "sh", "-c", shell_cmd, 0 );  
+       cerr << "failed to run shell_cmd\n"; 
+     } 
+   else  //parent  process 
+     { 
+       //for  process  input  pipe: 
+       close(fds_processInput[0]);   //close  input 
+        
+       //for  process  output  pipe: 
+       close(fds_processOutput[1]);   //close  output 
+  
+       if(p_fd_in == 0) 
+     close(fds_processInput[1]); 
+       else 
+     *p_fd_in = fds_processInput[1]; 
+        
+       if(p_fd_out == 0) 
+     close(fds_processOutput[0]); 
+       else 
+     *p_fd_out = fds_processOutput[0]; 
+  
+     } 
+   return pid;  
+ }
+ 
