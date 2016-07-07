@@ -39,6 +39,13 @@ void *threadFunction(void *value){
        string runcommandstring = "/usr/lib/cgi-bin/run.sh " + temp + " &";
        mcmd_char = runcommandstring.c_str();
        pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
+    while(1)  //read  process  output 
+     { 
+       char c3; 
+       if(read(fd_out3, &c3, 1) <= 0) 
+       break; //no  data 
+       cout <<  "<div> " << c3 << "</div>";  
+     } 
        return x;                 //return the pointer x ( as a void*)
 }
 
@@ -333,7 +340,7 @@ cout <<  "</div>" << endl;
          { 
            cout << "<div> Unable to exec prog Test Case 3 </div>"; 
           } 
-
+/*
     while(1)  //read  process  output 
      { 
        char c3; 
@@ -341,6 +348,7 @@ cout <<  "</div>" << endl;
        break; //no  data 
        cout <<  "<div> " << c3 << "</div>";  
      } 
+*/
 
     // at this point the thread was created successfully
     while(y<5){               // loop and increment y, displaying values
