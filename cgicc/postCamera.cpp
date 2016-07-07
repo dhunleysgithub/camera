@@ -38,7 +38,7 @@ void *threadFunction(void *value){
        exposureCount=temp.str();      //str is temp as string
        runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposureCount + " &";
        mcmd_char = runcommandstring.c_str();
-/*
+
        pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
     while(1)  //read  process  output 
      { 
@@ -47,7 +47,7 @@ void *threadFunction(void *value){
        break; //no  data 
        cout <<  "<div> " << c3 << "</div>";  
      } 
-     */
+     
        cout <<  "<div> " << runcommandstring << "</div>";  
        return x;                 //return the pointer x ( as a void*)
 }
