@@ -29,12 +29,12 @@ void *threadFunction(void *value){
    pid_t  pid3 = 0;
 	int *x = (int *)value;    //cast the data passed to an int pointer
 	int *number = (int *)value;    //cast the data passed to an int pointer
+        ostringstream temp;  //temp as in temporary
+        temp<<*number;
 	while(*x<50){              //while the value of x is less than 5
 		usleep(1000);         //sleep for 1ms - encourage main thread
 		(*x)++;               //increment the value of x by 1
 	}
-       ostringstream temp;  //temp as in temporary
-       temp<<*number;
        exposureCount=temp.str();      //str is temp as string
        runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposureCount + " &";
        mcmd_char = runcommandstring.c_str();
