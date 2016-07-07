@@ -35,7 +35,9 @@ fstream fs;
    Cgicc form;                                     // the CGI form object
    
    string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, expsReset;
-   string mcmd_str;
+   string mcmd_str, runcommandstring;
+   runcommandstring = " ";
+   
    const char* mcmd_char;
    
    bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
@@ -192,7 +194,7 @@ cout << "</div>";
     if (command=="multiple")
      {
       iexposuresRequested = str2int(exposuresRequested);
-      
+      runcommandstring = "/usr/lib/cgi-bin/run.sh " + iexposuresRequested
       for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
        {
         //cout << "<div> Running exposure number " << a << "</div>";
@@ -205,7 +207,8 @@ cout << "</div>";
        logoutput = "Ran " + exposuresRequested + " exposures ";
 
   //     pid_t  pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
-       pid3 = popen2("/usr/lib/cgi-bin/run.sh 100", &fd_in3, &fd_out3); 
+    //   pid3 = popen2("/usr/lib/cgi-bin/run.sh 100", &fd_in3, &fd_out3); 
+       pid3 = popen2(runcommandstring, &fd_in3, &fd_out3); 
   /*   
          if(pid3 <= 0) 
          { 
