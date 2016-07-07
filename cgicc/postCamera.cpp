@@ -22,12 +22,24 @@ using namespace cgicc;
 // This is the thread function that will execute when the thread is created
 //  it passes and receives data by void pointers
 void *threadFunction(void *value){
+   string runcommandstring;
+   const char* mcmd_char;
+   int fd_out3; 
+   int fd_in3 =0; 
+   pid_t  pid3 = 0;
 	int *x = (int *)value;    //cast the data passed to an int pointer
-	while(*x<5){              //while the value of x is less than 5
+	int *number = (int *)value;    //cast the data passed to an int pointer
+	while(*x<50){              //while the value of x is less than 5
 		usleep(1000);         //sleep for 1ms - encourage main thread
 		(*x)++;               //increment the value of x by 1
 	}
-	return x;                 //return the pointer x ( as a void*)
+       ostringstream temp;  //temp as in temporary
+       temp<<*number;
+       exposureCount=temp.str();      //str is temp as string
+       string runcommandstring = "/usr/lib/cgi-bin/run.sh " + temp + " &";
+       mcmd_char = runcommandstring.c_str();
+       pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
+       return x;                 //return the pointer x ( as a void*)
 }
 
 int main()
@@ -221,7 +233,15 @@ cout << "</div>";
 
      //  pid_t  pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
      //  pid3 = popen2("/usr/lib/cgi-bin/run.sh 100", &fd_in3, &fd_out3); 
-       pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
+    int x=0, y=0;
+    pthread_t thread;         //this is our handle to the pthread
+    // create the thread, pass the reference, address of the function and data
+    // pthread_create() returns 0 on the successful creation of a thread
+    if(pthread_create(&thread, NULL, &threadFunction, &iexposuresRequested)!=0){
+    	cout << "Failed to create the thread" << endl;
+    	return 1;
+    }
+//       pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
        cout << "<div> popen2 none blocking ?? </div>";
 /*   
          if(pid3 <= 0) 
@@ -322,14 +342,6 @@ cout <<  "</div>" << endl;
        cout <<  "<div> " << c3 << "</div>";  
      } 
 
-    int x=0, y=0;
-    pthread_t thread;         //this is our handle to the pthread
-    // create the thread, pass the reference, address of the function and data
-    // pthread_create() returns 0 on the successful creation of a thread
-    if(pthread_create(&thread, NULL, &threadFunction, &x)!=0){
-    	cout << "Failed to create the thread" << endl;
-    	return 1;
-    }
     // at this point the thread was created successfully
     while(y<5){               // loop and increment y, displaying values
     	cout << "The value of x=" << x << " and y=" << y++ << endl;
