@@ -195,6 +195,8 @@ cout << "</div>";
      {
       iexposuresRequested = str2int(exposuresRequested);
       runcommandstring = "/usr/lib/cgi-bin/run.sh " + iexposuresRequested;
+       //mcmd_str = "/root/camera/run_shutter_ol.sh " + exposuresRequested;
+       mcmd_char = runcommandstring.c_str();
       for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
        {
         //cout << "<div> Running exposure number " << a << "</div>";
@@ -208,7 +210,7 @@ cout << "</div>";
 
   //     pid_t  pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
     //   pid3 = popen2("/usr/lib/cgi-bin/run.sh 100", &fd_in3, &fd_out3); 
-       pid3 = popen2(runcommandstring, &fd_in3, &fd_out3); 
+       pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
   /*   
          if(pid3 <= 0) 
          { 
