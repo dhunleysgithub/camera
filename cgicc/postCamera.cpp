@@ -194,7 +194,7 @@ cout << "</div>";
     if (command=="multiple")
      {
       iexposuresRequested = str2int(exposuresRequested);
-      runcommandstring = "/usr/lib/cgi-bin/run.sh " + iexposuresRequested
+      runcommandstring = "/usr/lib/cgi-bin/run.sh " + iexposuresRequested;
       for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
        {
         //cout << "<div> Running exposure number " << a << "</div>";
