@@ -22,7 +22,7 @@ using namespace cgicc;
 // This is the thread function that will execute when the thread is created
 //  it passes and receives data by void pointers
 void *threadFunction(void *value){
-   string runcommandstring;
+   string runcommandstring, exposureCount;
    const char* mcmd_char;
    int fd_out3; 
    int fd_in3 =0; 
@@ -36,7 +36,7 @@ void *threadFunction(void *value){
        ostringstream temp;  //temp as in temporary
        temp<<*number;
        exposureCount=temp.str();      //str is temp as string
-       string runcommandstring = "/usr/lib/cgi-bin/run.sh " + temp + " &";
+       runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposureCount + " &";
        mcmd_char = runcommandstring.c_str();
        pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
     while(1)  //read  process  output 
