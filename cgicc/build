@@ -10,3 +10,6 @@
 
 echo "Building the postCamera.cgi C++ CGI Program"
 g++ postCamera.cpp LED.cpp -o postCamera.cgi -lcgicc
+
+echo "Building the music.cgi C++ CGI Program"
+g++ music.cpp -o music.cgi -lcgicc
