@@ -9,7 +9,7 @@
 #g++ postLED.cpp LED.cpp -o postLED.cgi -lcgicc
 
 echo "Building the postCamera.cgi C++ CGI Program"
-g++ postCamera.cpp LED.cpp -o postCamera.cgi -lcgicc -pthreads
+g++ postCamera.cpp LED.cpp -o postCamera.cgi -lcgicc -pthread
 
 #echo "Building the music.cgi C++ CGI Program"
 #g++ music.cpp -o music.cgi -lcgicc
