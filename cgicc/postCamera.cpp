@@ -211,7 +211,7 @@ cout << "</div>";
      //  pid_t  pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
      //  pid3 = popen2("/usr/lib/cgi-bin/run.sh 100", &fd_in3, &fd_out3); 
        pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
-       cout << "<div> popen2 none blocking ?? " << a << "</div>";
+       cout << "<div> popen2 none blocking ?? </div>";
 /*   
          if(pid3 <= 0) 
          { 
