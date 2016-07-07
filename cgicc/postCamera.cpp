@@ -194,7 +194,7 @@ cout << "</div>";
     if (command=="multiple")
      {
       iexposuresRequested = str2int(exposuresRequested);
-      runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposuresRequested;
+      runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposuresRequested + " &";
        //mcmd_str = "/root/camera/run_shutter_ol.sh " + exposuresRequested;
        mcmd_char = runcommandstring.c_str();
       for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
