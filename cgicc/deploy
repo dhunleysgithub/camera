@@ -7,3 +7,4 @@ cp *.cgi /usr/lib/cgi-bin/
 chmod +s /usr/lib/cgi-bin/getLED.cgi
 chmod +s /usr/lib/cgi-bin/postLED.cgi
 chmod +s /usr/lib/cgi-bin/postCamera.cgi
+chmod +s /usr/lib/cgi-bin/music.cgi
