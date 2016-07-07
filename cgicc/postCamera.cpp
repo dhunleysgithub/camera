@@ -221,6 +221,8 @@ cout << "</div>";
    int fd_in3 =0; 
    pid_t  pid3 = 0;
    int y=0;
+    int x=0;
+    pthread_t thread;         //this is our handle to the pthread
 
     if (command=="multiple")
      {
@@ -241,8 +243,6 @@ cout << "</div>";
 
      //  pid_t  pid3 = popen2("/root/camera/run.sh 100", &fd_in3, &fd_out3); 
      //  pid3 = popen2("/usr/lib/cgi-bin/run.sh 100", &fd_in3, &fd_out3); 
-    int x=0;
-    pthread_t thread;         //this is our handle to the pthread
     // create the thread, pass the reference, address of the function and data
     // pthread_create() returns 0 on the successful creation of a thread
     if(pthread_create(&thread, NULL, &threadFunction, &iexposuresRequested)!=0){
