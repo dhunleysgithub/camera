@@ -87,6 +87,7 @@ for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
   // Increment exposures counter
   number+=1;  // add one exposure count each time this program is called
   usleep(10000);
+  cout << "a, number : " << a << " , " << number << endl;
  }
  
 ostringstream temp;  //temp as in temporary
