@@ -37,7 +37,7 @@ void *threadFunction(void *value){
 	}
        exposureCount=temp.str();      //str is temp as string
      //  runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposureCount + " &";
-       runcommandstring = "/root/camera/shutter_openloop/shutter_openloop" + exposureCount + " &";
+       runcommandstring = "/root/camera/shutter_openloop/shutter_openloop " + exposureCount + " &";
        mcmd_char = runcommandstring.c_str();
        int i;
 /*
