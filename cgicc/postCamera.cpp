@@ -30,7 +30,7 @@ void *threadFunction(void *value){
 	int *x = (int *)value;    //cast the data passed to an int pointer
 	int *number = (int *)value;    //cast the data passed to an int pointer
         ostringstream temp;  //temp as in temporary
-        temp<<*number;
+        temp << *number;
 	while(*x<50){              //while the value of x is less than 5
 		usleep(1000);         //sleep for 1ms - encourage main thread
 		(*x)++;               //increment the value of x by 1
