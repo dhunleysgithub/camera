@@ -36,10 +36,11 @@ void *threadFunction(void *value){
 		(*x)++;               //increment the value of x by 1
 	}
        exposureCount=temp.str();      //str is temp as string
-       runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposureCount + " &";
+     //  runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposureCount + " &";
+       runcommandstring = "/root/camera/shutter_openloop/shutter_openloop" + exposureCount + " &";
        mcmd_char = runcommandstring.c_str();
        int i;
-
+/*
       for( int a = 1; a < 10 + 1; a = a + 1 )
        {
        cout << "<div> Running exposure number " << a << "</div>";
@@ -49,8 +50,8 @@ void *threadFunction(void *value){
        //i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
        i = system("/root/camera/shutter_openloop/shutter_openloop");
        }
-
-//        i = system(mcmd_char);
+*/
+        i = system(mcmd_char);
 /*
        pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
     while(1)  //read  process  output 
