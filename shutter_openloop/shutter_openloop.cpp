@@ -21,18 +21,18 @@ int main (int argc, char** argv)
 {
 
 
-/* placeholder for future arguments
+
  
    // If argc less than two, whoops
     if(argc < 2)
     {
         // Print out a usage example
-        std::cerr << "Usage: " << argv[0] << " < placeholder >.  e.g. " << argv[0] << " 1= tbd or 0= tbd " << std::endl;
+        std::cerr << "Usage: " << argv[0] << " < No. of exposures to run >.  e.g. " << argv[0] << " 25 " << std::endl;
         // Exit
         return 1;
     }
-*/
 
+int iexposuresRequested = atoi(argv[1]);
 string exposureCount1; 
 int number, i;
 stringstream ss;
@@ -41,21 +41,6 @@ fstream fs;
 fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
 cout << "The starting exposure count is " << number << endl;
-number+=1;  // add one exposure count each time this program is called
-ostringstream temp;  //temp as in temporary
-temp<<number;
-exposureCount1=temp.str();      //str is temp as string
-//exposureCount=ss.str();      //str is temp as string
-cout << "The ending exposure count is " << number << endl;
-//fs << exposureCount1;
-fs.close();
-ofstream myfile (ss.str().c_str());
-  if (myfile.is_open())
-  {
-    myfile << exposureCount1;
-    myfile.close();
-  }
-  else cout << "Unable to open file";
 
 // P9_21 is Pin Number 6
    PWM pwm_apos("pwm_test_P9_21.17");      // P9_21 MUST be loaded as a slot before use
@@ -79,6 +64,9 @@ ofstream myfile (ss.str().c_str());
    usleep(500000);
 */
    usleep(100000);
+   
+for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
+ {
    pwm_apos.setDutyCycle(90.0f);        
    usleep(140000);
    pwm_apos.setDutyCycle(0.0f);        
@@ -96,8 +84,26 @@ ofstream myfile (ss.str().c_str());
    pwm_aneg.stop();                    // stop the PWM output
 
 
-   usleep(10000);
+  // Increment exposures counter
+  number+=1;  // add one exposure count each time this program is called
+  usleep(10000);
+ }
  
+ostringstream temp;  //temp as in temporary
+temp<<number;
+exposureCount1=temp.str();      //str is temp as string
+//exposureCount=ss.str();      //str is temp as string
+cout << "The ending exposure count is " << number << endl;
+//fs << exposureCount1;
+fs.close();
+ofstream myfile (ss.str().c_str());
+  if (myfile.is_open())
+  {
+    myfile << exposureCount1;
+    myfile.close();
+  }
+  else cout << "Unable to open file";
+
    return 1;
 
 
