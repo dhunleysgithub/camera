@@ -40,7 +40,7 @@ void *threadFunction(void *value){
        mcmd_char = runcommandstring.c_str();
        int i;
 
-      for( int a = 1; a < *number + 1; a = a + 1 )
+      for( int a = 1; a < 10 + 1; a = a + 1 )
        {
        cout << "<div> Running exposure number " << a << "</div>";
        // i = system("nice -20 /root/camera/prsplttest/prsplt 0");
