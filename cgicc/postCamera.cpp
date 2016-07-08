@@ -39,7 +39,17 @@ void *threadFunction(void *value){
        runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposureCount + " &";
        mcmd_char = runcommandstring.c_str();
        int i;
-        i = system(mcmd_char);
+
+      for( int a = 1; a < *number + 1; a = a + 1 )
+       {
+       cout << "<div> Running exposure number " << a << "</div>";
+       // i = system("nice -20 /root/camera/prsplttest/prsplt 0");
+       // i = system("nice -20 /root/camera/stepper_plus_tensioner/stepper_plus_tensioner");
+       // i = system("nice -20 /root/camera/prsplttest/prsplt 1");
+       i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
+       }
+
+//        i = system(mcmd_char);
 /*
        pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
     while(1)  //read  process  output 
