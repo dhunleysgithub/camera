@@ -267,7 +267,18 @@ cout << "</div>";
     if(pthread_create(&thread, NULL, &threadFunction, &iexposuresRequested)!=0){
     	cout << "Failed to create the thread" << endl;
     	return 1;
+     // at this point the thread was created successfully
+    while(y<5){               // loop and increment y, displaying values
+    	cout << "The value of x=" << x << " and y=" << y++ << endl;
+    	usleep(1000);         // encourage the pthread to run
     }
+    void* result;             // OPTIONAL: receive data back from pthread
+               cout <<  "DEBUG 1a" << endl;  
+    pthread_join(thread, &result);   // allow the pthread to complete
+    int *z = (int *) result;         // cast from void* to int* to get z
+    cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
+               cout <<  "DEBUG 1a2" << endl;  
+   }
 //       pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
        cout << "<div> popen2 none blocking ?? </div>";
 /*   
@@ -370,22 +381,11 @@ cout <<  "</div>" << endl;
      } 
 */
 
-    // at this point the thread was created successfully
-    while(y<5){               // loop and increment y, displaying values
-    	cout << "The value of x=" << x << " and y=" << y++ << endl;
-    	usleep(1000);         // encourage the pthread to run
-    }
-    void* result;             // OPTIONAL: receive data back from pthread
-               cout <<  "DEBUG 1a" << endl;  
-    pthread_join(thread, &result);   // allow the pthread to complete
-    int *z = (int *) result;         // cast from void* to int* to get z
-    cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
-               cout <<  "DEBUG 1a2" << endl;  
 
    cout << body() << html();
                cout <<  "DEBUG 1a3" << endl;  
 
-   
+ /*  
  //**************************************************************************  
    while(1)
    {
@@ -541,20 +541,20 @@ cout << "</div>";
     }
 //       pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
        cout << "<div> popen2 none blocking ?? </div>";
-/*   
-         if(pid3 <= 0) 
-         { 
-           cout << "<div> Unable to exec prog Test Case 3 </div>"; 
-          } 
-    while(1)  //read  process  output 
-     { 
-       char c3; 
-       if(read(fd_out3, &c3, 1) <= 0) 
-       break; //no  data 
-       cout <<  "<div> " << c3 << "</div>";  
-     } 
-     */
-     }
+   
+//         if(pid3 <= 0) 
+ //        { 
+ //          cout << "<div> Unable to exec prog Test Case 3 </div>"; 
+ //         } 
+ //   while(1)  //read  process  output 
+ //    { 
+ //      char c3; 
+  //     if(read(fd_out3, &c3, 1) <= 0) 
+  //     break; //no  data 
+  //     cout <<  "<div> " << c3 << "</div>";  
+   //  } 
+     
+  //   }
      
 // Read exposure counter value
 fs.open(ss.str().c_str(), fstream::in);
@@ -608,7 +608,7 @@ sleep(2);
 }
 
 // ****************************************************************** 
-   
+ */  
    
    
    
