@@ -379,9 +379,11 @@ cout <<  "</div>" << endl;
     pthread_join(thread, &result);   // allow the pthread to complete
     int *z = (int *) result;         // cast from void* to int* to get z
     cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
+               cout <<  "<div> " << "DEBUG 1a" << "</div>";  
 
    cout << body() << html();
-   
+                  cout <<  "<div> " << "DEBUG 1b" << "</div>";  
+
    
  //**************************************************************************  
    while(1)
