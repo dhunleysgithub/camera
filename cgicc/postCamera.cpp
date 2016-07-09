@@ -381,7 +381,7 @@ cout <<  "</div>" << endl;
     cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
                cout <<  "<div> " << "DEBUG 1a" << "</div>";  
 
-   cout << body() << html();
+   //cout << body() << html();
                   cout <<  "<div> " << "DEBUG 1b" << "</div>";  
 
    
