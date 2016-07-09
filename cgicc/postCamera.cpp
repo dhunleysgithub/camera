@@ -597,7 +597,7 @@ cout <<  "</div></form>" << endl;
 cout <<  "<div id=\"footer\">" << endl;
 cout <<  "Serial Number: XYZ Phone: 480-406-9804 Email: dwight_hunley@hotmail.com" << endl;
 cout <<  "</div>" << endl;
-               cout <<  "<div> " << "DEBUG 3 << "</div>";  
+               cout <<  "<div> " << "DEBUG 3" << "</div>";  
 
 sleep(2);
 }
