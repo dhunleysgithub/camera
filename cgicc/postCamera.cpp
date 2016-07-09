@@ -376,6 +376,7 @@ cout <<  "</div>" << endl;
     	usleep(1000);         // encourage the pthread to run
     }
     void* result;             // OPTIONAL: receive data back from pthread
+               cout <<  "DEBUG 1a" << endl;  
                cout <<  "<div> " << "DEBUG 1a" << "</div>";  
     pthread_join(thread, &result);   // allow the pthread to complete
     int *z = (int *) result;         // cast from void* to int* to get z
