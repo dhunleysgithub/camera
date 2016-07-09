@@ -377,20 +377,20 @@ cout <<  "</div>" << endl;
     }
     void* result;             // OPTIONAL: receive data back from pthread
                cout <<  "DEBUG 1a" << endl;  
-               cout <<  "<div> " << "DEBUG 1a" << "</div>";  
     pthread_join(thread, &result);   // allow the pthread to complete
     int *z = (int *) result;         // cast from void* to int* to get z
     cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
-               cout <<  "<div> " << "DEBUG 1a-2" << "</div>";  
-                  cout <<  "<div> " << "DEBUG 1b" << "</div>";  
+               cout <<  "DEBUG 1a2" << endl;  
 
    cout << body() << html();
-                  cout <<  "<div> " << "DEBUG 1b-2" << "</div>";  
+               cout <<  "DEBUG 1a3" << endl;  
 
    
  //**************************************************************************  
    while(1)
    {
+               cout <<  "DEBUG 1a4" << endl;  
+
   // Generate the form but use states that are set in the form that was submitted
 cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
 cout << html() << head() << title("EBB C++ Post Camera Baseline") << head() << endl;
@@ -467,7 +467,7 @@ cout << "<input type=\"submit\" value=\"Process Selections\" />";
 cout << "</div>";
 
 // Reset Exposure Count Requested
-               cout <<  "<div> " << "DEBUG 2" << "</div>";  
+               cout <<  "DEBUG 2" << endl;  
 
   if ( command=="expreset"){
    //  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
@@ -602,7 +602,7 @@ cout <<  "</div></form>" << endl;
 cout <<  "<div id=\"footer\">" << endl;
 cout <<  "Serial Number: XYZ Phone: 480-406-9804 Email: dwight_hunley@hotmail.com" << endl;
 cout <<  "</div>" << endl;
-               cout <<  "<div> " << "DEBUG 3" << "</div>";  
+               cout <<  "DEBUG 3" << endl;  
 
 sleep(2);
 }
