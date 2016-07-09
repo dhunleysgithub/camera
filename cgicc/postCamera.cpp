@@ -219,6 +219,8 @@ cout << "</div>";
      //   i = system("nice -20 /root/camera/prsplttest/prsplt 1");
         i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop 1");
         logoutput = "Ran a single exposure ";
+               cout <<  "<div> " << "DEBUG 1" << "</div>";  
+
     }
 
  //iexposuresRequested = str2int(exposuresRequested);
@@ -247,14 +249,14 @@ cout << "</div>";
       runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposuresRequested + " &";
        //mcmd_str = "/root/camera/run_shutter_ol.sh " + exposuresRequested;
        mcmd_char = runcommandstring.c_str();
-      for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
-       {
+     // for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
+     //  {
         //cout << "<div> Running exposure number " << a << "</div>";
        // i = system("nice -20 /root/camera/prsplttest/prsplt 0");
        // i = system("nice -20 /root/camera/stepper_plus_tensioner/stepper_plus_tensioner");
        // i = system("nice -20 /root/camera/prsplttest/prsplt 1");
        // i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop");
-       }
+    //   }
        
        logoutput = "Ran " + exposuresRequested + " exposures ";
 
@@ -460,6 +462,7 @@ cout << "<input type=\"submit\" value=\"Process Selections\" />";
 cout << "</div>";
 
 // Reset Exposure Count Requested
+               cout <<  "<div> " << "DEBUG 2" << "</div>";  
 
   if ( command=="expreset"){
    //  cout << "<div> Resetting the exposure count to 0  "  << "</div>";
@@ -594,6 +597,7 @@ cout <<  "</div></form>" << endl;
 cout <<  "<div id=\"footer\">" << endl;
 cout <<  "Serial Number: XYZ Phone: 480-406-9804 Email: dwight_hunley@hotmail.com" << endl;
 cout <<  "</div>" << endl;
+               cout <<  "<div> " << "DEBUG 3 << "</div>";  
 
 sleep(2);
 }
