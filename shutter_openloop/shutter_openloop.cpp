@@ -40,7 +40,9 @@ ss << exposureCount_PATH;
 fstream fs;
 fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
+fs.close();
 cout << "The starting exposure count is " << number << endl;
+ostringstream temp;  //temp as in temporary
 
 // P9_21 is Pin Number 6
    PWM pwm_apos("pwm_test_P9_21.17");      // P9_21 MUST be loaded as a slot before use
@@ -84,19 +86,13 @@ for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
    pwm_aneg.stop();                    // stop the PWM output
 
 
-  // Increment exposures counter
-  number+=1;  // add one exposure count each time this program is called
-  usleep(10000);
-  cout << "a, number : " << a << " , " << number << endl;
- }
- 
-ostringstream temp;  //temp as in temporary
+ // Increment exposures counter
+ number+=1;  // add one exposure count each time this program is called
 temp<<number;
 exposureCount1=temp.str();      //str is temp as string
 //exposureCount=ss.str();      //str is temp as string
 cout << "The ending exposure count is " << number << endl;
 //fs << exposureCount1;
-fs.close();
 ofstream myfile (ss.str().c_str());
   if (myfile.is_open())
   {
@@ -104,6 +100,12 @@ ofstream myfile (ss.str().c_str());
     myfile.close();
   }
   else cout << "Unable to open file";
+
+
+  usleep(10000);
+  cout << "a, number : " << a << " , " << number << endl;
+ }
+ 
 
    return 1;
 
