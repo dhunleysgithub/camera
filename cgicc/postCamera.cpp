@@ -33,7 +33,7 @@ void *threadFunction(void *value){
    temp << *number;
    while(*x<50){              //while the value of x is less than 5
       //usleep(1000);         //sleep for 1ms - encourage main thread
-      usleep(2);         //sleep for 1ms - encourage main thread
+      sleep(2);         //sleep for 1ms - encourage main thread
       (*x)++;               //increment the value of x by 1
 	}
    exposureCount=temp.str();      //str is temp as string
@@ -221,7 +221,7 @@ cout << "</div>";
     	return 1;
     }
      // at this point the thread was created successfully
-    while(y<5){               // loop and increment y, displaying values
+    while(y<50){               // loop and increment y, displaying values
     	cout << "The value of x=" << x << " and y=" << y++ << endl;
     	sleep(1);         // encourage the pthread to run
     }
