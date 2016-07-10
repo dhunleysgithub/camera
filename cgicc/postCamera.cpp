@@ -219,7 +219,6 @@ cout << "</div>";
      //   i = system("nice -20 /root/camera/prsplttest/prsplt 1");
         i = system("nice -20 /root/camera/shutter_openloop/shutter_openloop 1");
         logoutput = "Ran a single exposure ";
-               cout <<  "<div> " << "DEBUG 1" << "</div>";  
 
     }
 
@@ -278,10 +277,8 @@ cout << "</div>";
     //pthread_join(thread, &result);   // allow the pthread to complete
     //int *z = (int *) result;         // cast from void* to int* to get z
     //cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
-               cout <<  "DEBUG 1a2" << endl;  
    }
 //       pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
-       cout << "<div> popen2 none blocking ?? </div>";
 /*   
          if(pid3 <= 0) 
          { 
