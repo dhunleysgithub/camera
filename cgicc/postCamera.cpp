@@ -274,9 +274,9 @@ cout << "</div>";
     }
     void* result;             // OPTIONAL: receive data back from pthread
                cout <<  "DEBUG 1a" << endl;  
-    pthread_join(thread, &result);   // allow the pthread to complete
-    int *z = (int *) result;         // cast from void* to int* to get z
-    cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
+    //pthread_join(thread, &result);   // allow the pthread to complete
+    //int *z = (int *) result;         // cast from void* to int* to get z
+    //cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
                cout <<  "DEBUG 1a2" << endl;  
    }
 //       pid3 = popen2(mcmd_char, &fd_in3, &fd_out3); 
