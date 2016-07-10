@@ -379,6 +379,16 @@ cout <<  "</div>" << endl;
      } 
 */
 
+cout << "<input type=\"radio\" name=\"command\" value=\"unload\""
+
+cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" << endl;
+
+cout << "<script>" << endl;
+cout << "function myFunction() { " << endl;
+cout << "    document.write(\"Hello World\") " << endl;
+cout << "}" << endl;
+cout << "</script>";
+
 
    cout << body() << html();
                cout <<  "DEBUG 1a3" << endl;  
