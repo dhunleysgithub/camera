@@ -32,7 +32,8 @@ void *threadFunction(void *value){
    ostringstream temp;  //temp as in temporary
    temp << *number;
    while(*x<50){              //while the value of x is less than 5
-      usleep(1000);         //sleep for 1ms - encourage main thread
+      //usleep(1000);         //sleep for 1ms - encourage main thread
+      usleep(2);         //sleep for 1ms - encourage main thread
       (*x)++;               //increment the value of x by 1
 	}
    exposureCount=temp.str();      //str is temp as string
@@ -40,7 +41,7 @@ void *threadFunction(void *value){
    runcommandstring = "/root/camera/shutter_openloop/shutter_openloop " + exposureCount + " &";
    mcmd_char = runcommandstring.c_str();
    int i;
-   i = system(mcmd_char);
+   //i = system(mcmd_char);
    cout << " Run Command String : " << runcommandstring << endl;  
    return x;                 //return the pointer x ( as a void*)
 }
