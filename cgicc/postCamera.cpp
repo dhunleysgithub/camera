@@ -271,10 +271,9 @@ cout << "</div>";
      // at this point the thread was created successfully
     while(y<5){               // loop and increment y, displaying values
     	cout << "The value of x=" << x << " and y=" << y++ << endl;
-    	usleep(1000);         // encourage the pthread to run
+    	sleep(1);         // encourage the pthread to run
     }
     void* result;             // OPTIONAL: receive data back from pthread
-               cout <<  "DEBUG 1a" << endl;  
     //pthread_join(thread, &result);   // allow the pthread to complete
     //int *z = (int *) result;         // cast from void* to int* to get z
     //cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
