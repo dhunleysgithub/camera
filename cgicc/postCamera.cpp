@@ -378,13 +378,14 @@ cout <<  "</div>" << endl;
        cout <<  "<div> " << c3 << "</div>";  
      } 
 */
-
-
+//form.getElement("command")
+//document.getElementById("myTextarea").value = "Fifth Avenue, New York City";
 cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" << endl;
 
 cout << "<script>" << endl;
 cout << "function myFunction() { " << endl;
-cout << "    document.write(\"Hello World\") " << endl;
+//cout << "    document.write(\"Hello World\") " << endl;
+cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
 cout << "}" << endl;
 cout << "</script>";
 
