@@ -295,7 +295,7 @@ cout << "</div>";
        cout <<  "<div> " << c3 << "</div>";  
      } 
      */
-     }
+     
      
 // Read exposure counter value
 fs.open(ss.str().c_str(), fstream::in);
