@@ -62,7 +62,8 @@ void *threadFunction(void *value){
        cout <<  "<div> " << c3 << "</div>";  
      } 
    */  
-       cout <<  "<div> " << runcommandstring << "</div>";  
+    //   cout <<  "<div> " << runcommandstring << "</div>";  
+       cout << runcommandstring << endl;  
        return x;                 //return the pointer x ( as a void*)
 }
 
