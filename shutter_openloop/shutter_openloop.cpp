@@ -90,6 +90,8 @@ for( int a = 1; a < iexposuresRequested+1; a = a + 1 )
  number+=1;  // add one exposure count each time this program is called
 temp<<number;
 exposureCount1=temp.str();      //str is temp as string
+temp.clear();
+temp.str("");
 //exposureCount=ss.str();      //str is temp as string
 cout << "The ending exposure count is " << number << endl;
 //fs << exposureCount1;
