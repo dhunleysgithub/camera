@@ -267,6 +267,7 @@ cout << "</div>";
     if(pthread_create(&thread, NULL, &threadFunction, &iexposuresRequested)!=0){
     	cout << "Failed to create the thread" << endl;
     	return 1;
+    }
      // at this point the thread was created successfully
     while(y<5){               // loop and increment y, displaying values
     	cout << "The value of x=" << x << " and y=" << y++ << endl;
