@@ -26,21 +26,21 @@ void *threadFunction(void *value){
    const char* mcmd_char;
    int fd_out3; 
    int fd_in3 =0; 
-   pid_t  pid3 = 0;
+   //pid_t  pid3 = 0;
    int *x = (int *)value;    //cast the data passed to an int pointer
    int *number = (int *)value;    //cast the data passed to an int pointer
-   ostringstream temp;  //temp as in temporary
-   temp << *number;
+   ///ostringstream temp;  //temp as in temporary
+   ///temp << *number;
    while(*x<50){              //while the value of x is less than 5
       //usleep(1000);         //sleep for 1ms - encourage main thread
       sleep(2);         //sleep for 1ms - encourage main thread
       (*x)++;               //increment the value of x by 1
 	}
-   exposureCount=temp.str();      //str is temp as string
+   ///exposureCount=temp.str();      //str is temp as string
    //  runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposureCount + " &";
-   runcommandstring = "/root/camera/shutter_openloop/shutter_openloop " + exposureCount + " &";
-   mcmd_char = runcommandstring.c_str();
-   int i;
+   ///runcommandstring = "/root/camera/shutter_openloop/shutter_openloop " + exposureCount + " &";
+   ///mcmd_char = runcommandstring.c_str();
+   ///int i;
    //i = system(mcmd_char);
    cout << " Run Command String : " << runcommandstring << endl;  
    return x;                 //return the pointer x ( as a void*)
@@ -216,7 +216,8 @@ cout << "</div>";
        logoutput = "Ran " + exposuresRequested + " exposures ";
     // create the thread, pass the reference, address of the function and data
     // pthread_create() returns 0 on the successful creation of a thread
-    if(pthread_create(&thread, NULL, &threadFunction, &iexposuresRequested)!=0){
+    //if(pthread_create(&thread, NULL, &threadFunction, &iexposuresRequested)!=0){
+    if(pthread_create(&thread, NULL, &threadFunction, &x)!=0){
     	cout << "Failed to create the thread" << endl;
     	return 1;
     }
