@@ -379,7 +379,6 @@ cout <<  "</div>" << endl;
      } 
 */
 
-cout << "<input type=\"radio\" name=\"command\" value=\"unload\""
 
 cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" << endl;
 
