@@ -24,8 +24,7 @@ using namespace cgicc;
 void *threadFunction(void *value){
    string runcommandstring, exposureCount;
    const char* mcmd_char;
-   int fd_out3; 
-   int fd_in3 =0; 
+   int fd_out3, fd_in3 =0; 
    //pid_t  pid3 = 0;
    int *x = (int *)value;    //cast the data passed to an int pointer
    int *number = (int *)value;    //cast the data passed to an int pointer
