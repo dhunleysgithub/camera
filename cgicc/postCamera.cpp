@@ -267,6 +267,11 @@ cout << "</script>";
 cout << "<A Href=\"/cgi-bin/tcount.cgi\">See the counter!</A>" << endl;
 cout <<  "</div>" << endl;
 
+   if (command=="load")
+    {
+        i = system("/usr/lib/cgi-bin/tcount.cgi");
+    }
+
 
 cout <<  "<div id=\"nav3\">" << endl;
 cout <<  "<h2>Control </h2>" << endl;
