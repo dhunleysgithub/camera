@@ -259,8 +259,8 @@ cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" <<
 
 cout << "<script>" << endl;
 cout << "function myFunction() { " << endl;
-//cout << "    document.write(\"Hello World\") " << endl;
-cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
+cout << "    document.write(\"Hello World\") " << endl;
+//cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
 cout << "}" << endl;
 cout << "</script>";
 cout <<  "</div>" << endl;
