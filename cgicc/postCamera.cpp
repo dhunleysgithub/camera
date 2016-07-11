@@ -48,7 +48,7 @@ void *threadFunction(void *value){
 int main()
 {
 
-string logoutput;
+string logoutput; 
 int number;
 stringstream ss;
 ss << exposureCount_PATH;
