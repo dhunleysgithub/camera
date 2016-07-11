@@ -312,22 +312,23 @@ cout <<  "</div>" << endl;
 
 //form.getElement("command")
 //document.getElementById("myTextarea").value = "Fifth Avenue, New York City";
-cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" << endl;
+//cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" << endl;
 
 cout << "<script>" << endl;
 cout << "function myFunction() { " << endl;
 //cout << "    document.write(\"Hello World\") " << endl;
-//cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
+cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
 cout << "}" << endl;
 cout << "</script>";
+sleep(10);
+
+
 
 cout << body() << html();
 
 cout <<  "DEBUG 1a3" << endl;  
 
-sleep(10);
 
-cout << "    document.write(\"Hello World\") " << endl;
 
 sleep(10);
 
