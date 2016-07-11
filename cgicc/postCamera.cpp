@@ -23,6 +23,7 @@ using namespace cgicc;
 //  it passes and receives data by void pointers
 void *threadFunction(void *value){
    string runcommandstring, exposureCount;
+   
    const char* mcmd_char;
    int fd_out3, fd_in3 =0; 
    //pid_t  pid3 = 0;
