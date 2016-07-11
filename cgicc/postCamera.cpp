@@ -282,7 +282,7 @@ cout <<  "<label class=\"description\" for=\"element_1\">Film Used : </label>" <
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
 
 it = form.getElement("command");                // get the radio command chosen
-it->setValue()="load";
+it->setData()="load";
  
 
 cout <<  "</div></form>" << endl;
