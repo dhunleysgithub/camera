@@ -98,7 +98,13 @@ bool isReset = form.queryCheckbox("expsReset");   // get the state of the status
 
 // Generate the form but use states that are set in the form that was submitted
 cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
-cout << html() << head() << title("EBB C++ Post Camera Baseline") << head() << endl;
+//cout << html() << head() << title("EBB C++ Post Camera Baseline") << head() << endl;
+
+cout << "<head>" << endl;
+cout << "<title>EBB C++ Post Camera Baseline</title>" << endl;
+cout << "<meta http-equiv="refresh" content=\"5\">" << endl;
+cout << "</head>" << endl;
+
 cout << body() << h1("BeagleBone Black Camera Controller") << endl;;
 cout << "<form action=\"/cgi-bin/postCamera.cgi\" method=\"POST\">\n";
 cout <<  "<style>" << endl;
