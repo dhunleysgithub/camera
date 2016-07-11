@@ -255,6 +255,14 @@ cout <<  "  <option value=\"Full\">Full</option>" << endl;
 cout <<  "  <option value=\"Half\">Half</option>" << endl;
 cout <<  "  <option value=\"tbd\">Quarter</option>" << endl;
 cout <<  "</select>" << endl;
+cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" << endl;
+
+cout << "<script>" << endl;
+cout << "function myFunction() { " << endl;
+//cout << "    document.write(\"Hello World\") " << endl;
+cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
+cout << "}" << endl;
+cout << "</script>";
 cout <<  "</div>" << endl;
 
 
@@ -313,15 +321,7 @@ cout <<  "</div>" << endl;
 //form.getElement("command")
 //document.getElementById("myTextarea").value = "Fifth Avenue, New York City";
 
-cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" << endl;
-
-cout << "<script>" << endl;
-cout << "function myFunction() { " << endl;
-//cout << "    document.write(\"Hello World\") " << endl;
-cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
-cout << "}" << endl;
-cout << "</script>";
-sleep(10);
+//sleep(10);
 
 
 
@@ -331,7 +331,7 @@ cout <<  "DEBUG 1a3" << endl;
 
 
 
-sleep(10);
+//sleep(10);
 
 /*
 // Generate the form but use states that are set in the form that was submitted
