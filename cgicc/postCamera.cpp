@@ -263,6 +263,8 @@ cout << "    document.write(\"Hello World\") " << endl;
 //cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
 cout << "}" << endl;
 cout << "</script>";
+
+cout << "<A Href=\"/cgi-bin/tcount.cgi\">See the counter!</A>" << endl;
 cout <<  "</div>" << endl;
 
 
