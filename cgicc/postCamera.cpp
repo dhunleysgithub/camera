@@ -173,6 +173,8 @@ cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
 cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
         << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"expreset\""
+        << ( command=="standby" ? "checked":"") << "/> Reset Exposure Counter <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"expreset\""
         << ( command=="expreset" ? "checked":"") << "/> Reset Exposure Counter <br>";
 cout << "<input type=\"submit\" value=\"Process Selections\" />";
 cout << "</div>";
@@ -246,6 +248,8 @@ ostringstream temp;  //temp as in temporary
 temp<<number;
 exposureCount=temp.str();      //str is temp as string
 fs.close();
+
+command=="standby";
 
 // 5V Power Control Panel
 
