@@ -280,6 +280,11 @@ cout <<  "<label class=\"description\" for=\"element_1\">Frame Count : </label>"
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
 cout <<  "<label class=\"description\" for=\"element_1\">Film Used : </label>" << endl;
 cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
+
+it = form.getElement("command");                // get the radio command chosen
+it->setValue()="load";
+ 
+
 cout <<  "</div></form>" << endl;
 
 
@@ -323,7 +328,7 @@ cout <<  "</div>" << endl;
 
 //sleep(10);
 
-
+/*
 
 cout << body() << html();
 
@@ -458,6 +463,7 @@ cout <<  "Serial Number: XYZ Phone: 480-406-9804 Email: dwight_hunley@hotmail.co
 cout <<  "</div>" << endl;
 
 
+*/
 
 return 0;
 
