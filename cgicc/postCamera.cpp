@@ -331,9 +331,9 @@ cout <<  "DEBUG 1a3" << endl;
 
 
 
-//sleep(10);
+sleep(10);
 
-/*
+
 // Generate the form but use states that are set in the form that was submitted
 cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
 cout << html() << head() << title("EBB C++ Post Camera Baseline") << head() << endl;
@@ -457,7 +457,7 @@ cout <<  "<div id=\"footer\">" << endl;
 cout <<  "Serial Number: XYZ Phone: 480-406-9804 Email: dwight_hunley@hotmail.com" << endl;
 cout <<  "</div>" << endl;
 
-*/
+
 
 return 0;
 
