@@ -326,10 +326,18 @@ cout <<  "</div>" << endl;
           } 
 
 sleep(5);
-   if (command=="load")
+
+while(pwr_cmd=="on")
+{
+   if (command=="load" && pwr_cmd=="on" )
     {
+    	
         i = system("/usr/lib/cgi-bin/tcount.cgi");
+        it = form.getElement("pwr_cmd");   // get the period text value
+        pwr_cmd = it->getValue();          // otherwise use submitted value
+        sleep(1);
     }
+}
 
 //form.getElement("command")
 //document.getElementById("myTextarea").value = "Fifth Avenue, New York City";
