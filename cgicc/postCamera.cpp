@@ -410,7 +410,7 @@ cout << "</div>";
 // Read exposure counter value
 fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
-ostringstream temp;  //temp as in temporary
+//ostringstream temp;  //temp as in temporary
 temp<<number;
 exposureCount=temp.str();      //str is temp as string
 fs.close();
