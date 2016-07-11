@@ -317,13 +317,143 @@ cout << "<button type=\"button\" onclick=\"myFunction()\">Click me!</button>" <<
 cout << "<script>" << endl;
 cout << "function myFunction() { " << endl;
 //cout << "    document.write(\"Hello World\") " << endl;
-cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
+//cout << "    document.getElementById(\"exposures\").value = \"Fifth Avenue, New York City\"" << endl;
 cout << "}" << endl;
 cout << "</script>";
 
 cout << body() << html();
 
 cout <<  "DEBUG 1a3" << endl;  
+
+sleep(10);
+
+cout << "    document.write(\"Hello World\") " << endl;
+
+sleep(10);
+
+// Generate the form but use states that are set in the form that was submitted
+cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using cgicc
+cout << html() << head() << title("EBB C++ Post Camera Baseline") << head() << endl;
+cout << body() << h1("BeagleBone Black Camera Controller") << endl;;
+cout << "<form action=\"/cgi-bin/postCamera.cgi\" method=\"POST\">\n";
+cout <<  "<style>" << endl;
+cout <<  "#header {" << endl;
+cout <<  "    background-color:blue;" << endl;
+cout <<  "    color:white;" << endl;
+cout <<  "    text-align:center;" << endl;
+cout <<  "    padding:5px;" << endl;
+cout <<  "}" << endl;
+cout <<  "#nav {" << endl;
+cout <<  "    line-height:30px;" << endl;
+cout <<  "    background-color:#99ccff;" << endl;
+cout <<  "    height:400px;" << endl;
+cout <<  "    width:300px;" << endl;
+cout <<  "    float:left;" << endl;
+cout <<  "    padding:2px;" << endl;
+cout <<  "}" << endl;
+cout <<  "#nav2 {" << endl;
+cout <<  "    line-height:30px;" << endl;
+cout <<  "    background-color:#ffffcc;" << endl;
+cout <<  "    height:400px;" << endl;
+cout <<  "    width:300px;" << endl;
+cout <<  "    float:left;" << endl;
+cout <<  "    padding:2px;" << endl;
+cout <<  "}" << endl;
+cout <<  "#nav3 {" << endl;
+cout <<  "    line-height:30px;" << endl;
+cout <<  "    background-color:#cc99ff;" << endl;
+cout <<  "    height:400px;" << endl;
+cout <<  "    width:300px;" << endl;
+cout <<  "    float:left;" << endl;
+cout <<  "    padding:2px;" << endl;
+cout <<  "}" << endl;
+cout <<  "#section {" << endl;
+cout <<  "    width:350px;" << endl;
+cout <<  "    float:left;" << endl;
+cout <<  "    padding:10px;" << endl;
+cout <<  "}" << endl;
+cout <<  "#footer {" << endl;
+cout <<  "    background-color:black;" << endl;
+cout <<  "    color:white;" << endl;
+cout <<  "    clear:both;" << endl;
+cout <<  "    text-align:center;" << endl;
+cout <<  "    padding:5px;" << endl;
+cout <<  "}" << endl;
+cout <<  "</style>" << endl;
+cout <<  "</head>" << endl;
+
+cout <<  "<body>" << endl;
+cout <<  "<div id=\"header\">" << endl;
+cout <<  "<h1>Photoengineering Inc.</h1>" << endl;
+cout <<  "</div>" << endl;
+
+cout <<  "<div id=\"nav\">" << endl;
+cout <<  "<h2>Command Selection </h2>" << endl;
+cout << "<input type=\"radio\" name=\"command\" value=\"single\""
+      << ( command=="single" ? "checked":"") << "/> Single <br>";	// is the command="on"?
+cout << "<input type=\"radio\" name=\"command\" value=\"multiple\""
+       << ( command=="multiple" ? "checked":"") << "/> Multiple <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"load\""
+        << ( command=="load" ? "checked":"") << "/> Load <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"unload\""
+        << ( command=="unload" ? "checked":"") << "/> Unload <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
+        << ( command=="singleadv" ? "checked":"") << "/> Single Adv. <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
+        << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"expreset\""
+        << ( command=="expreset" ? "checked":"") << "/> Reset Exposure Counter <br>";
+cout << "<input type=\"submit\" value=\"Process Selections\" />";
+cout << "</div>";
+
+
+// Read exposure counter value
+fs.open(ss.str().c_str(), fstream::in);
+fs >> number;
+ostringstream temp;  //temp as in temporary
+temp<<number;
+exposureCount=temp.str();      //str is temp as string
+fs.close();
+
+// 5V Power Control Panel
+
+cout <<  "<div id=\"nav2\">" << endl;
+cout <<  "<h2>Board 5V Power </h2>" << endl;
+cout << "<input type=\"radio\" name=\"pwr_cmd\" value=\"on\""
+      << ( pwr_cmd=="on" ? "checked":"") << "/> On ";	// is the pwr_cmd="on"?
+cout << "<input type=\"radio\" name=\"pwr_cmd\" value=\"off\""
+       << ( pwr_cmd=="off" ? "checked":"") << "/> Off <br><br>";
+cout <<  "<h2>Format </h2>" << endl;
+cout <<  "<select>" << endl;
+cout <<  "  <option value=\"Full\">Full</option>" << endl;
+cout <<  "  <option value=\"Half\">Half</option>" << endl;
+cout <<  "  <option value=\"tbd\">Quarter</option>" << endl;
+cout <<  "</select>" << endl;
+cout <<  "</div>" << endl;
+
+
+cout <<  "<div id=\"nav3\">" << endl;
+cout <<  "<h2>Control </h2>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Exposure Time : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\" maxlength=\"25\" value=\"\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Multiple Exp. : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"multexpreq\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"25\" value=\""<< exposuresRequested << "\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Multiple Advance : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"5\" value=\"\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Exposure Count : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"exposures\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\""<< exposureCount << "\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Frame Count : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
+cout <<  "<label class=\"description\" for=\"element_1\">Film Used : </label>" << endl;
+cout <<  "<input id=\"element_1\" name=\"element_1\" class=\"element text small\" type=\"text\" size = \"6\"  maxlength=\"125\" value=\"\"/><br>" << endl;
+cout <<  "</div></form>" << endl;
+
+
+
+cout <<  "<div id=\"footer\">" << endl;
+cout <<  "Serial Number: XYZ Phone: 480-406-9804 Email: dwight_hunley@hotmail.com" << endl;
+cout <<  "</div>" << endl;
+
 
 return 0;
 
