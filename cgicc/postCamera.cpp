@@ -173,7 +173,7 @@ cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
 cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
         << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"standby\""
-        << ( command!="standby" ? "checked":"") << "/> Reset Exposure Counter <br>";
+        << ( command!="standby" ? "checked":"") << "/> Stand By Until Command Completed <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"expreset\""
         << ( command=="expreset" ? "checked":"") << "/> Reset Exposure Counter <br>";
 cout << "<input type=\"submit\" value=\"Process Selections\" />";
