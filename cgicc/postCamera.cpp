@@ -10,6 +10,7 @@
 #include <unistd.h> 
 #include <sys/types.h> 
 #include <pthread.h>
+#include "/root/camera/clientserver/network/SocketServer.h"
 
 using namespace std;
 using namespace cgicc;
@@ -218,6 +219,12 @@ cout << "</div>";
     if (command=="multiple")
      {
       iexposuresRequested = str2int(exposuresRequested);
+      SocketClient sc(argv[1], 54321);
+      sc.connectToServer();
+      string message(exposuresRequested);
+      cout << "Sending [" << message << "]" << endl;
+      sc.send(message);
+/*      
       runcommandstring = "/usr/lib/cgi-bin/run.sh " + exposuresRequested + " &";
        //mcmd_str = "/root/camera/run_shutter_ol.sh " + exposuresRequested;
        mcmd_char = runcommandstring.c_str();
@@ -239,7 +246,9 @@ cout << "</div>";
     //pthread_join(thread, &result);   // allow the pthread to complete
     //int *z = (int *) result;         // cast from void* to int* to get z
     //cout << "Final: x=" << x << ", y=" << y << " and z=" << *z << endl;
-   }
+   
+*/     	
+     }
 
 // Read exposure counter value
 fs.open(ss.str().c_str(), fstream::in);
