@@ -1,3 +1,3 @@
 #!/bin/bash
-g++ client.cpp network/SocketClient.cpp -o client
-g++ server.cpp network/SocketServer.cpp -o server
+g++ client.cpp /root/camera/clientserver/network/SocketClient.cpp -o client
+g++ server.cpp /root/camera/clientserver/network/SocketServer.cpp -o server
