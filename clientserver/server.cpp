@@ -6,7 +6,7 @@
 
 #include <stdlib.h>     // for system call
 #include <iostream>
-#include "network/SocketServer.h"
+#include "/root/camera/clientserver/network/SocketServer.h"
 using namespace std;
 using namespace exploringBB;
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
    const char* runcmdc;
    string runcmd;
    int i;
-   runcmd = "/pw/data/controls/cert/dhunley/threadedClientServer_exp/forloop " + rec;
+   runcmd = "/root/camera/shutter_openloop/shutter_openloop " + rec;
    runcmdc = runcmd.c_str();
    i = system(runcmdc);
    string message("The Server says thanks!");
