@@ -116,10 +116,10 @@ cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using 
 
 cout << "<head>" << endl;
 cout << "<title>EBB C++ Post Camera Baseline</title>" << endl;
-//if (command == "standby")
-//{
+if (command == "standby")
+{
 cout << "<meta http-equiv=\"refresh\" content=\"5\">" << endl;
-//}
+}
 cout << "</head>" << endl;
 
 cout << body() << h1("BeagleBone Black Camera Controller") << endl;;
