@@ -77,12 +77,18 @@ string ConnectionHandler::receive(int size=1024){
 void ConnectionHandler::threadLoop(){
     //cout << "*** Created a Connection Handler threaded Function" << endl;
     while(this->running){
+       const char* runcmdc;
+       string runcmd;
+       int i;
        string rec = this->receive(1024);
        cout << "Received from the client [" << rec << "]" << endl;
        string message("The Server says thanks!");
        cout << "Sending back [" << message << "]" << endl;
        cout << "  but going asleep for 5 seconds first...." << endl;
-       usleep(5000000);
+       runcmd = "/root/camera/shutter_openloop/shutter_openloop " + rec;
+       runcmdc = runcmd.c_str();
+       i = system(runcmdc);
+       usleep(1000000);
        this->send(message);
        this->running = false;
 	}
