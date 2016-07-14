@@ -46,8 +46,12 @@ void *threadFunction(void *value){
    return x;                 //return the pointer x ( as a void*)
 }
 
-int main()
-{
+int main(int argc, char *argv[]){
+   if(argc!=2){
+      cout << "Incorrect usage: " << endl;
+      cout << "   client server_name" << endl;
+      return 2;
+   }
 
 SocketClient sc(argv[1], 54321);
 
@@ -109,7 +113,7 @@ cout << "<meta http-equiv=\"refresh\" content=\"5\">" << endl;
 cout << "</head>" << endl;
 
 cout << body() << h1("BeagleBone Black Camera Controller") << endl;;
-cout << "<form action=\"/cgi-bin/postCamera.cgi\" method=\"POST\">\n";
+cout << "<form action=\"/cgi-bin/postCamera.cgi localhost\" method=\"POST\">\n";
 cout <<  "<style>" << endl;
 cout <<  "#header {" << endl;
 cout <<  "    background-color:blue;" << endl;
