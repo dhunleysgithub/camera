@@ -47,6 +47,8 @@ void *threadFunction(void *value){
    return x;                 //return the pointer x ( as a void*)
 }
 
+int main( ){
+/*
 int main(int argc, char *argv[]){
    if(argc!=2){
       cout << "Incorrect usage: " << endl;
@@ -54,6 +56,7 @@ int main(int argc, char *argv[]){
       return 2;
    }
    cout << "Starting EBB Client Example" << endl;
+*/
 
 string logoutput; 
 int number;
