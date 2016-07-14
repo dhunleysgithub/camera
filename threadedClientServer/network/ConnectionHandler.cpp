@@ -28,6 +28,7 @@
 #include <iostream>
 #include <string.h>
 #include "SocketServer.h"
+#include <stdlib.h>     // for system call
 using namespace std;
 
 namespace exploringBB {
