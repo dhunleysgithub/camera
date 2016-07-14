@@ -10,7 +10,7 @@
 #include <unistd.h> 
 #include <sys/types.h> 
 #include <pthread.h>
-#include "/root/camera/clientserver/network/SocketServer.h"
+#include "/root/camera/clientserver/network/SocketClient.h"
 
 using namespace std;
 using namespace cgicc;
