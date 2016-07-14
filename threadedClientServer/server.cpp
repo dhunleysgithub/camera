@@ -10,7 +10,7 @@ using namespace std;
 using namespace exploringBB;
 
 int main(int argc, char *argv[]){
-   cout << "Starting EBB Server Example" << endl;
+   cout << "Starting Server " << endl;
    SocketServer server(54321);
    cout << "Listening for a connection..." << endl;
    server.threadedListen();
@@ -19,5 +19,5 @@ int main(int argc, char *argv[]){
 //   string message("The Server says thanks!");
 //   cout << "Sending back [" << message << "]" << endl;
 //   server.send(message);
-   cout << "End of EBB Server Example" << endl;
+   cout << "Server Stopped" << endl;
 }
