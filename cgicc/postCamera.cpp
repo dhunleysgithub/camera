@@ -54,7 +54,6 @@ int main(int argc, char *argv[]){
       return 2;
    }
    cout << "Starting EBB Client Example" << endl;
-   SocketClient sc(argv[1], 54321);
 
 string logoutput; 
 int number;
@@ -72,6 +71,9 @@ string pwr_cmd, command, exposureCount, exposuresRequested, exposuresReset, exps
 string mcmd_str, runcommandstring;
 runcommandstring = " ";
 const char* mcmd_char;
+const char* serverName = "localhost";
+SocketClient sc(serverName, 54321);
+
 bool isReset = form.queryCheckbox("expsReset");   // get the state of the status checkbox
    
    form_iterator it = form.getElement("pwr_cmd");   // get the period text value
@@ -114,7 +116,7 @@ cout << "<meta http-equiv=\"refresh\" content=\"5\">" << endl;
 cout << "</head>" << endl;
 
 cout << body() << h1("BeagleBone Black Camera Controller") << endl;;
-cout << "<form action=\"/cgi-bin/postCamera.cgi localhost\" method=\"POST\">\n";
+cout << "<form action=\"/cgi-bin/postCamera.cgi \" method=\"POST\">\n";
 cout <<  "<style>" << endl;
 cout <<  "#header {" << endl;
 cout <<  "    background-color:blue;" << endl;
