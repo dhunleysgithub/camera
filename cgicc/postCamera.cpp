@@ -84,6 +84,7 @@ bool isReset = form.queryCheckbox("expsReset");   // get the state of the status
       pwr_cmd = "off";                         // if it is invalid use 100
    }
    else { pwr_cmd = it->getValue(); }          // otherwise use submitted value
+   
    it = form.getElement("command");                // get the radio command chosen
    if (it == form.getElements().end() || it->getValue()==""){
       command = "standby";                             // if it is invalid use "off"
@@ -99,18 +100,8 @@ bool isReset = form.queryCheckbox("expsReset");   // get the state of the status
    if (it == form.getElements().end() || it->getValue()==""){
       exposuresRequested = "0"; // if it is invalid use 100
    }
-   else
-   // otherwise use submitted value
-   {
-   	// but sleep to give time to enter data if not on standby
-   	if (command != "standby")
-   	{
-   	// sleep to give time to enter data
-         sleep(5);   		
-   	}
-   	exposuresRequested = it->getValue();
-   }          
-
+   else { exposuresRequested = it->getValue(); } // otherwise use submitted value
+   
    it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
    if (it == form.getElements().end() || it->getValue()==""){
       expsReset = "NO"; // if it is invalid use 100
@@ -125,7 +116,10 @@ cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using 
 
 cout << "<head>" << endl;
 cout << "<title>EBB C++ Post Camera Baseline</title>" << endl;
+if (command == "standby")
+{
 cout << "<meta http-equiv=\"refresh\" content=\"5\">" << endl;
+}
 cout << "</head>" << endl;
 
 cout << body() << h1("BeagleBone Black Camera Controller") << endl;;
