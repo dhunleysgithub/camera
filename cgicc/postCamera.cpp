@@ -86,7 +86,7 @@ bool isReset = form.queryCheckbox("expsReset");   // get the state of the status
    else { pwr_cmd = it->getValue(); }          // otherwise use submitted value
    it = form.getElement("command");                // get the radio command chosen
    if (it == form.getElements().end() || it->getValue()==""){
-      command = "stanby";                             // if it is invalid use "off"
+      command = "standby";                             // if it is invalid use "off"
    }
    else { command = it->getValue(); }              // otherwise use submitted value
 
@@ -95,11 +95,21 @@ bool isReset = form.queryCheckbox("expsReset");   // get the state of the status
       exposureCount = "0";
    }
 
-   it = form.getElement("multexpreq");   // get the exisitng number of exposures executed value
+   it = form.getElement("multexpreq");   // get the exisitng number of exposures Requested value
    if (it == form.getElements().end() || it->getValue()==""){
       exposuresRequested = "0"; // if it is invalid use 100
    }
-   else { exposuresRequested = it->getValue(); }          // otherwise use submitted value
+   else
+   // otherwise use submitted value
+   {
+   	// but sleep to give time to enter data if not on standby
+   	if (command != "standby")
+   	{
+   	// sleep to give time to enter data
+         sleep(5);   		
+   	}
+   	exposuresRequested = it->getValue();
+   }          
 
    it = form.getElement("expsReset");   // get the exisitng number of exposures executed value
    if (it == form.getElements().end() || it->getValue()==""){
