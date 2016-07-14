@@ -49,6 +49,8 @@ void *threadFunction(void *value){
 int main()
 {
 
+SocketClient sc(argv[1], 54321);
+
 string logoutput; 
 int number;
 stringstream ss;
@@ -219,7 +221,6 @@ cout << "</div>";
     if (command=="multiple")
      {
       iexposuresRequested = str2int(exposuresRequested);
-      SocketClient sc(argv[1], 54321);
       sc.connectToServer();
       string message(exposuresRequested);
       cout << "Sending [" << message << "]" << endl;
