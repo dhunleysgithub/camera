@@ -14,6 +14,7 @@
 
 using namespace std;
 using namespace cgicc;
+using namespace exploringBB;
 
 #define exposureCount_PATH "/root/expcounts.txt"
 //FUNCTION  DECLARATIONS: 
