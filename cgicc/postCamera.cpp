@@ -87,7 +87,7 @@ bool isReset = form.queryCheckbox("expsReset");   // get the state of the status
    
    it = form.getElement("command");                // get the radio command chosen
    if (it == form.getElements().end() || it->getValue()==""){
-      command = "stannby";                             // if it is invalid use "off"
+      command = "standby";                             // if it is invalid use "off"
    }
    else { command = it->getValue(); }              // otherwise use submitted value
 
@@ -116,7 +116,7 @@ cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using 
 
 cout << "<head>" << endl;
 cout << "<title>EBB C++ Post Camera Baseline</title>" << endl;
-if (command != "standby")
+if (command == "standby")
 {
 cout << "<meta http-equiv=\"refresh\" content=\"2\">" << endl;
 }
@@ -191,7 +191,7 @@ cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
 cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
         << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"standby\""
-        << ( command!="standby" ? "checked":"") << "/> Stand By Until Command Completed <br>";
+        << ( command=="standby" ? "checked":"") << "/> Stand By Until Command Completed <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"expreset\""
         << ( command=="expreset" ? "checked":"") << "/> Reset Exposure Counter <br>";
 cout << "<input type=\"submit\" value=\"Process Selections\" />";
