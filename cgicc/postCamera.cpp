@@ -52,8 +52,8 @@ int main(int argc, char *argv[]){
       cout << "   client server_name" << endl;
       return 2;
    }
-
-SocketClient sc(argv[1], 54321);
+   cout << "Starting EBB Client Example" << endl;
+   SocketClient sc(argv[1], 54321);
 
 string logoutput; 
 int number;
