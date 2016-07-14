@@ -13,18 +13,22 @@ using namespace exploringBB;
 int main(int argc, char *argv[]){
    cout << "Starting Non-threaded Server Example" << endl;
    SocketServer server(54321);
-   cout << "Listening for a connection..." << endl;
-   server.listen();
-   string rec = server.receive(1024);
-   cout << "Received from the client [" << rec << "]" << endl;
    const char* runcmdc;
    string runcmd;
    int i;
+   cout << "Listening endlessly for a connection..." << endl;
+   while(1)
+   {
+   server.listen();
+   string rec = server.receive(1024);
+   cout << "Received from the client [" << rec << "]" << endl;
    runcmd = "/root/camera/shutter_openloop/shutter_openloop " + rec;
    runcmdc = runcmd.c_str();
    i = system(runcmdc);
    string message("The Server says thanks!");
    cout << "Sending back [" << message << "]" << endl;
    server.send(message);
+   sleep(2);
+   }
    cout << "End of Non-threaded Server Example" << endl;
 }
