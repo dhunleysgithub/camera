@@ -121,6 +121,7 @@ if (command != "standby")
 cout << "<meta http-equiv=\"refresh\" content=\"2\">" << endl;
 }
 cout << "</head>" << endl;
+    cout << "command = "  << command << endl;
 
 cout << body() << h1("BeagleBone Black Camera Controller") << endl;;
 cout << "<form action=\"/cgi-bin/postCamera.cgi \" method=\"POST\">\n";
