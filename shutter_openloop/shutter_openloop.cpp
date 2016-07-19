@@ -41,7 +41,7 @@ fstream fs;
 fs.open(ss.str().c_str(), fstream::in);
 fs >> number;
 fs.close();
-cout << "The starting exposure count is " << number << endl;
+//cout << "The starting exposure count is " << number << endl;
 ostringstream temp;  //temp as in temporary
 
 // P9_21 is Pin Number 6
@@ -93,7 +93,7 @@ exposureCount1=temp.str();      //str is temp as string
 temp.clear();
 temp.str("");
 //exposureCount=ss.str();      //str is temp as string
-cout << "The ending exposure count is " << number << endl;
+//cout << "The ending exposure count is " << number << endl;
 //fs << exposureCount1;
 ofstream myfile (ss.str().c_str());
   if (myfile.is_open())
@@ -105,7 +105,7 @@ ofstream myfile (ss.str().c_str());
 
 
   usleep(10000);
-  cout << "a, number : " << a << " , " << number << endl;
+ // cout << "a, number : " << a << " , " << number << endl;
  }
  
 
