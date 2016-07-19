@@ -116,7 +116,7 @@ cout << HTTPHTMLHeader() << endl;               // Generate the HTML form using 
 
 cout << "<head>" << endl;
 cout << "<title>EBB C++ Post Camera Baseline</title>" << endl;
-if (command == "standby")
+if (command == "refresh")
 {
 cout << "<meta http-equiv=\"refresh\" content=\"5\">" << endl;
 }
@@ -190,8 +190,10 @@ cout << "<input type=\"radio\" name=\"command\" value=\"singleadv\""
         << ( command=="singleadv" ? "checked":"") << "/> Single Adv. <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"multipleadv\""
         << ( command=="multipleadv" ? "checked":"") << "/> Multiple Adv. <br>";
+cout << "<input type=\"radio\" name=\"command\" value=\"refresh\""
+        << ( command=="refresh" ? "checked":"") << "/> Start Refreshing <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"standby\""
-        << ( command=="standby" ? "checked":"") << "/> Stand By Until Command Completed <br>";
+        << ( command=="standby" ? "checked":"") << "/> Stop Refreshing <br>";
 cout << "<input type=\"radio\" name=\"command\" value=\"expreset\""
         << ( command=="expreset" ? "checked":"") << "/> Reset Exposure Counter <br>";
 cout << "<input type=\"submit\" value=\"Process Selections\" />";
