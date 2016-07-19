@@ -118,7 +118,7 @@ cout << "<head>" << endl;
 cout << "<title>EBB C++ Post Camera Baseline</title>" << endl;
 if (command == "refresh")
 {
-cout << "<meta http-equiv=\"refresh\" content=\"5\">" << endl;
+cout << "<meta http-equiv=\"refresh\" content=\"2\">" << endl;
 }
 cout << "</head>" << endl;
     cout << "command = "  << command << endl;
