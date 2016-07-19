@@ -87,7 +87,7 @@ bool isReset = form.queryCheckbox("expsReset");   // get the state of the status
    
    it = form.getElement("command");                // get the radio command chosen
    if (it == form.getElements().end() || it->getValue()==""){
-      command = "standby";                             // if it is invalid use "off"
+      command = "refresh";                             // if it is invalid use "off"
    }
    else { command = it->getValue(); }              // otherwise use submitted value
 
