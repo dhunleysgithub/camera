@@ -28,6 +28,14 @@ case "$1" in
     echo "network restart from script blah "
     /etc/init.d/networking restart
     ;;
+  force-reload)
+    echo "Force reloading script blah"
+    echo "Could do more here"
+    ;;
+  status)
+    echo "Ststus of script blah"
+    echo "Could do more here"
+    ;;
   *)
     echo "Usage: /etc/init.d/blah {start|stop|restart}"
     exit 1
