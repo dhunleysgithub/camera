@@ -3,20 +3,33 @@
 #
 
 # Some things that run always
-touch /var/lock/blah
+#touch /var/lock/blah
+
+echo "network restart from script blah "
+/etc/init.d/networking restart
+echo "tightvnc start from script blah "
+tightvncserver -rfbport 5901
 
 # Carry out specific functions when asked to by the system
 case "$1" in
   start)
     echo "Starting script blah "
     echo "Could do more here"
+    echo "tightvnc start from script blah "
+    tightvncserver -rfbport 5901
     ;;
   stop)
     echo "Stopping script blah"
     echo "Could do more here"
     ;;
+  restart)
+    echo "Stopping script blah"
+    echo "Could do more here"
+    echo "network restart from script blah "
+    /etc/init.d/networking restart
+    ;;
   *)
-    echo "Usage: /etc/init.d/blah {start|stop}"
+    echo "Usage: /etc/init.d/blah {start|stop|restart}"
     exit 1
     ;;
 esac
